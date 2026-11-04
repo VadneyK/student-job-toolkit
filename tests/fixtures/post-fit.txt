@@ -1,0 +1,8 @@
+Junior Data Analyst, Lakeview Grocers Co-op (fictional company for testing)
+Location: Sacramento, CA. Hybrid, 2 days a week in our downtown office.
+Pay: 58,000 to 66,000 dollars a year, plus benefits.
+About the role: Help our operations team understand sales, waste and staffing across 14 stores. Build and maintain weekly dashboards, answer questions from store managers with SQL, and flag stores where waste is rising.
+You have: a bachelor's degree or equivalent experience; SQL; Excel; clear writing. 0 to 2 years of experience. Tableau or Power BI preferred.
+Start date: summer 2027 for new grads.
+Process: 30-minute phone screen, a 60-minute SQL exercise, then a panel interview.
+Must be authorized to work in the US.

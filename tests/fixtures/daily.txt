@@ -1,0 +1,11 @@
+From: jobs-noreply@bigjobboard.example
+Subject: 25 new Data Analyst jobs near Sacramento
+(job alert list)
+---
+From: Dana Kim <dana.kim@pinestreetlogistics.example>
+Subject: Your application for Data Analyst I
+Hi Sam, thank you for applying. We've decided to move forward with other candidates for this role. We appreciated your bike-share dashboard. Best, Dana
+---
+From: Lakeview Grocers Co-op Recruiting <recruiting@lakeviewgrocers.example>
+Subject: Phone screen for Junior Data Analyst
+Hi Sam, we'd like to schedule a 30-minute phone screen. Please pick a time on this link by Friday: https://lakeviewgrocers.example/schedule

@@ -1,0 +1,12 @@
+{
+  "name": "student-job-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A free job-search kit for students and new grads: prompts for free AI chats and an offline tracker.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "check": "node tools/check.mjs",
+    "test": "node tools/build.mjs && node tools/check.mjs && node --experimental-websocket tests/phone-test.mjs"
+  }
+}

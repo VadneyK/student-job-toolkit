@@ -1,0 +1,7 @@
+Sam (fictional test student). Senior at a state university, B.A. Economics, minor in Statistics, graduating May 2027. GPA 3.4.
+Classes: Econometrics (R), Intro to Databases (SQL, PostgreSQL), Data Visualization (Tableau), Business Statistics (Excel).
+Job: Shift lead, campus dining hall, Sept 2024 to now, 15 hours a week. Schedule 12 student workers. Built a Google Sheet that tracks food waste by station; waste fell about 10 percent over one semester after the team used it (my estimate from the sheet).
+Project: Class project analyzing 5 years of city bike-share trips in SQL and Tableau; presented to the class; dashboard on Tableau Public.
+Club: Treasurer, Economics Club, 2025 to 2026. Kept the budget in Excel, about 4,000 dollars a year.
+Languages: Spanish, conversational. Sometimes I put fluent on applications.
+Skills: Excel (pivot tables, VLOOKUP), SQL (joins, group by), Tableau, some R, some Python (one class).
