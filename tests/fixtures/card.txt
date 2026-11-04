@@ -12,4 +12,5 @@ My process rules (for example: a take-home over 4 hours, ask first; I follow eve
 Dealbreakers: commission-only pay; pay to apply or buy equipment
 Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
 Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
 Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner

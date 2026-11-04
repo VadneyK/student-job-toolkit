@@ -1,0 +1,33 @@
+Help me write a short message asking someone in my field for help. Use only the facts I give. Under 80 words. One clear ask. Warm, plain, not flattering, and easy for them to say no to. Signed with my first name.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+Who they are and how I know of them (for example: "works as a data analyst at a hospital; we are both in the same church; the career team matched us"):
+works as a data analyst at a regional hospital system; we go to the same church, and the church's career team matched us by email yesterday
+
+What I am asking for (pick one: a 20-minute call / a look at my resume / a mock interview / a referral for one role):
+a referral for one role: Senior Data Analyst at their hospital system
+
+If I am asking about one role, my fit check result for it (paste the verdict and table from prompt 2):
+Verdict: SKIP. First reason: level. The post is titled Senior Data Analyst and requires "5+ years of experience in healthcare analytics"; my card has no paid analytics experience.
+
+1. If my ask is a referral and the fit check is not APPLY, or there is none: say so, and write the message as a 20-minute call ask instead.
+2. Write the message. Say how I know of them in one line, what I am studying or doing in one line, the one ask, and offer 2 or 3 evening or weekend times as [TIME 1], [TIME 2], [TIME 3]. End with a line that makes no easy: "If now's not a good time, no worries at all."
+3. Write a 2-line thank-you I can send after, with a [ONE THING I LEARNED] slot.
+4. Write a 2-line follow-up for one week later if they do not answer. After that, I let it go.

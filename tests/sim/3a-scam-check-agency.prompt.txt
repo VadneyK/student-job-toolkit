@@ -1,0 +1,36 @@
+Check this job message for scam signs before I click anything or reply. Use only what is in the message. Be specific and calm.
+
+My profile card (for context only):
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+The message (paste all of it, including the sender's name, email address or phone number, and any links as text):
+From: Jordan Lee <jordan.lee@harborpinestaffing.example>
+Subject: Data Analyst contract opportunity
+
+Hi Sam,
+
+I'm Jordan with Harbor and Pine Staffing. I have a 6-month contract Data Analyst role with a healthcare client in the Sacramento area, likely to extend. Your profile looks like a great fit! Can you send your updated resume and your hourly rate? Let me know today if possible so I can submit you.
+
+Thanks,
+Jordan
+
+1. Kind: a real person about a real role / job alert or newsletter / interview scheduling for a job I applied to / rejection / offer / likely scam / not sure.
+2. Signs. Check each and say yes or no, quoting the line: money, a check, gift cards, or bank details asked before a real offer; buying equipment from "their vendor"; interview only by text or chat app; an offer with no interview; pay far above normal for simple work; a free email address (gmail, outlook, and so on) for a company; a sender whose company, title, or role does not match or changes; odd spelling or mixed alphabets in names; pressure to act today; a link or file to open before anything is confirmed; asks for my address, ID, or Social Security number early.
+3. Verdict: LIKELY SCAM, CHECK FIRST, or LOOKS REAL, with the two strongest reasons.
+4. What to do next, in 3 steps or fewer. For LIKELY SCAM or CHECK FIRST: do not click links or open files; find the company's real website by searching its name yourself; contact them through that site; report the message to the platform it came through.
+5. If it looks real and is about a job, say "Run prompt 2 on the job post next." Do not write a reply.

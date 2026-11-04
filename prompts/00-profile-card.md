@@ -1,9 +1,9 @@
 # 0. Your profile card
 
-When: fill it once (prompt 1 helps), keep it in the tracker, and paste it at the top of every other prompt.
+When: fill it once (prompt 1 helps), keep it in the kit page or a phone note, and paste it into every other prompt.
 Time: 5 minutes.
 
-Free chats forget you between conversations. This card is how the chat knows who you are, every time, in 15 lines. Keep it in the tracker's Profile tab so the Copy buttons paste it in for you.
+Free chats forget you between conversations. This card is how the chat knows who you are, every time, in 15 lines. Keep it in the kit page's Card tab (the Copy buttons paste it in for you), or in a note on your phone, and paste it where a prompt says `[PASTE YOUR PROFILE CARD HERE]`.
 
 Leave out your phone number, home address, student ID, and anything you would not post on a job board.
 
@@ -24,6 +24,7 @@ My process rules (for example: a take-home over 4 hours, ask first; I follow eve
 Dealbreakers:
 Strongest evidence (3 lines, each a real thing I did, with a number if I have one):
 Proof I can link (project, portfolio, GitHub, writing sample):
+Groups I belong to (optional: church, campus ministry, club, alumni group):
 Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels):
 ```
 

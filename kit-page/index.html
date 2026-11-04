@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Job Kit</title>
+<style>
+/* One page, offline, no network. System fonts only so it works with no connection. */
+:root {
+  --bg: #f5f6f4; --panel: #ffffff; --fg: #1b2420; --muted: #5d6a63; --line: #d9dfdb;
+  --accent: #2c6e49; --accent-soft: #e2f0e7; --due: #a34a12; --due-soft: #fbeee4;
+  --idle: #8a958f; color-scheme: light;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --panel: #1a221e; --fg: #e5ece8; --muted: #9aa8a0; --line: #2b3631;
+  --accent: #7cc79b; --accent-soft: #1d3327; --due: #f0a06b; --due-soft: #3a2619; --idle: #7d8a83; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --panel: #1a221e; --fg: #e5ece8; --muted: #9aa8a0; --line: #2b3631;
+  --accent: #7cc79b; --accent-soft: #1d3327; --due: #f0a06b; --due-soft: #3a2619; --idle: #7d8a83; color-scheme: dark }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 var(--body); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 20px 16px 64px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+h1 { font-size: 24px; line-height: 1.2; margin: 0; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 24px 0 10px; }
+h3 { font-size: 17px; margin: 0; }
+p { margin: 0 0 10px; }
+.save { font: 13px/1.4 var(--mono); color: var(--muted); }
+.save.bad { color: var(--due); font-weight: 600; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 4px; }
+nav button { font: 600 15px var(--body); border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+nav button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+.list { display: grid; gap: 10px; }
+.row { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; min-width: 0; }
+.row.due { border-color: var(--due); background: var(--due-soft); }
+.row .top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+.row .t { font-weight: 600; overflow-wrap: anywhere; min-width: 0; }
+.row .m { color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+.row .n { font-size: 15px; overflow-wrap: anywhere; }
+.pill { font: 600 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .05em; padding: 5px 8px; border-radius: 999px; white-space: nowrap; background: var(--accent-soft); color: var(--accent); }
+.pill.idle { background: transparent; color: var(--idle); border: 1px solid var(--line); }
+.acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+button.b { font: 600 14px var(--body); border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 8px; padding: 8px 12px; cursor: pointer; min-height: 40px; }
+button.b:hover { border-color: var(--accent); }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a { color: var(--accent); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.stat b { display: block; font: 600 22px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+form.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+form.grid .full { grid-column: 1 / -1; }
+@media (max-width: 520px) { form.grid { grid-template-columns: 1fr; } }
+label { display: grid; gap: 4px; font-size: 14px; font-weight: 600; min-width: 0; }
+label.check { display: flex; align-items: center; gap: 8px; font-weight: 400; }
+input, select, textarea { font: 16px/1.4 var(--body); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; width: 100%; min-width: 0; }
+input[type="checkbox"] { width: 20px; height: 20px; }
+textarea { resize: vertical; }
+textarea.card { min-height: 360px; font: 14px/1.5 var(--mono); }
+.empty { border: 1px dashed var(--line); border-radius: 10px; padding: 16px; color: var(--muted); }
+.note { color: var(--muted); font-size: 14px; }
+.ok { color: var(--accent); font-size: 14px; }
+details summary { cursor: pointer; color: var(--muted); font-size: 14px; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 8px 0 0; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.filters button { font: 600 13px var(--body); border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
+.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Student Job Kit</h1>
+    <div class="save" id="save" role="status" aria-live="polite"></div>
+  </header>
+  <p class="note">Everything stays in this browser on this device. Nothing is sent anywhere. Export a backup once a week.</p>
+
+  <nav id="nav" aria-label="Sections"></nav>
+
+  <section id="v-log">
+    <h2 id="exp-h">Log something you did</h2>
+    <p class="note">Church service, campus ministry, small groups, events, tutoring, projects, part-time work. Write only what is true. The Resume tab turns each entry into resume lines.</p>
+    <form class="grid panel" id="exp-form" autocomplete="off">
+      <input type="hidden" name="id">
+      <label class="full">What it was<input name="what" required placeholder="For example: Fall retreat registration desk"></label>
+      <label>Your role<input name="role" placeholder="For example: Desk lead"></label>
+      <label>Group or organization<input name="group" placeholder="For example: campus ministry"></label>
+      <label>Started (month)<input name="start" type="month"></label>
+      <label>Ended (month, blank if ongoing)<input name="end" type="month"></label>
+      <label class="full">Hours (total, or per week)<input name="hours" placeholder="For example: 40, or 3 a week"></label>
+      <label class="full">What you did (one action per line, start with a verb)<textarea name="did" rows="4" placeholder="Led a team of 6 volunteers&#10;Built the sign-up sheet in Google Sheets"></textarea></label>
+      <label class="full">What you made (optional)<input name="made" placeholder="For example: a check-in spreadsheet used for 3 events"></label>
+      <label class="full">Who it reached or what changed (optional)<input name="reach" placeholder="For example: 180 students checked in"></label>
+      <label class="check full"><input type="checkbox" name="estimate"> The numbers are my estimate, not a count</label>
+      <label class="full">Skills it shows (comma separated)<input name="skills" placeholder="For example: event planning, Google Sheets, leading volunteers"></label>
+      <label>An adult who saw it (optional)<input name="adult" placeholder="Name"></label>
+      <label>Their role<input name="adultRole" placeholder="For example: campus staff"></label>
+      <label class="check full"><input type="checkbox" name="confirmed"> They told me this entry is accurate</label>
+      <label class="check full"><input type="checkbox" name="reference"> They agreed to be a reference</label>
+      <div class="acts full">
+        <button class="b primary" type="submit" id="save-exp">Save entry</button>
+        <button class="b" type="button" id="cancel-exp" hidden>Cancel</button>
+      </div>
+    </form>
+    <h2>Your log</h2>
+    <div class="list" id="exp-list"></div>
+  </section>
+
+  <section id="v-resume" hidden>
+    <h2>Resume lines from your log</h2>
+    <p class="note">Made from your entries with plain templates, no AI. Check every line is true before you use it. The notes under each entry say how to make it stronger.</p>
+    <div class="acts">
+      <button class="b primary" type="button" id="copy-resume">Copy all lines</button>
+      <button class="b" type="button" id="copy-polish">Copy a polish prompt for a free chat</button>
+      <span class="ok" id="resume-msg" aria-live="polite"></span>
+    </div>
+    <div class="list" id="resume-list"></div>
+    <h2>Skills, each with an example</h2>
+    <p class="note">Most employers want a skill shown with an example, not a list of words. Each skill below comes with the line from your log that shows it.</p>
+    <div class="list" id="skills-list"></div>
+    <h2>References</h2>
+    <div class="list" id="ref-list"></div>
+  </section>
+
+  <section id="v-jobs" hidden>
+    <h2>This week</h2>
+    <div class="stats" id="stats"></div>
+    <h2>Due today</h2>
+    <div class="list" id="today-list"></div>
+    <h2 id="form-h">Add a job</h2>
+    <form class="grid panel" id="form" autocomplete="off">
+      <input type="hidden" name="id">
+      <label>Company<input name="company" required></label>
+      <label>Role<input name="role" required></label>
+      <label class="full">Link to the post<input name="link" type="url" placeholder="https://"></label>
+      <label>Found through<select name="source"></select></label>
+      <label>Stage<select name="stage"></select></label>
+      <label>Fit check verdict<select name="verdict"></select></label>
+      <label>Next step date<input name="due" type="date"></label>
+      <label class="full">Next step<input name="next" placeholder="For example: send questions-first reply"></label>
+      <label class="full">Notes (unknowns, who you talked to, what you learned)<textarea name="notes" rows="3"></textarea></label>
+      <label class="check full"><input type="checkbox" name="share"> A friend could use this lead (shared without your notes)</label>
+      <div class="acts full">
+        <button class="b primary" type="submit" id="save-job">Save job</button>
+        <button class="b" type="button" id="cancel-edit" hidden>Cancel</button>
+      </div>
+    </form>
+    <h2>All jobs</h2>
+    <div class="filters" id="filters" role="group" aria-label="Filter by stage"></div>
+    <div class="list" id="job-list"></div>
+  </section>
+
+  <section id="v-prompts" hidden>
+    <h2>Prompts for any free AI chat</h2>
+    <p class="note">Tap Copy, open a new chat (Claude, ChatGPT, or Gemini, free plan is fine), paste, then fill the [PASTE ... HERE] parts. Your profile card goes in for you.</p>
+    <div class="list" id="prompt-list"></div>
+  </section>
+
+  <section id="v-card" hidden>
+    <h2>Your profile card</h2>
+    <p class="note">Fill it once with prompt 1. Every Copy button pastes it into the prompt. Keep out your phone, address, and ID numbers.</p>
+    <textarea class="card" id="card" aria-label="Profile card" spellcheck="true"></textarea>
+    <div class="acts">
+      <button class="b" type="button" id="card-reset">Start a blank card</button>
+      <span class="ok" id="card-saved" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <section id="v-backup" hidden>
+    <h2>Weekly summary</h2>
+    <p class="note">For prompt 7, the weekly review, or your row in the job club sheet. Company names only, no notes.</p>
+    <div class="acts"><button class="b primary" type="button" id="copy-week">Copy weekly summary</button></div>
+    <pre id="week-text" hidden></pre>
+
+    <h2>Backup</h2>
+    <p class="note" id="last-backup"></p>
+    <div class="acts">
+      <button class="b primary" type="button" id="export">Download backup file</button>
+      <button class="b" type="button" id="copy-backup">Copy backup as text</button>
+    </div>
+
+    <h2>Restore or add a friend's leads</h2>
+    <p class="note">Choose a backup or leads file, or paste its text. Jobs are merged: the newer copy of each one wins, and nothing is deleted.</p>
+    <div class="acts">
+      <label class="b" style="display:inline-flex;align-items:center;cursor:pointer">Choose file<input type="file" id="import-file" accept=".json,application/json,text/plain" hidden></label>
+    </div>
+    <textarea id="import-text" rows="4" placeholder="Or paste backup or leads text here" aria-label="Paste backup text"></textarea>
+    <div class="acts"><button class="b" type="button" id="import-paste">Add from pasted text</button></div>
+    <p class="ok" id="import-msg" aria-live="polite"></p>
+
+    <h2>Share leads with friends</h2>
+    <p class="note">Only jobs you ticked "A friend could use this lead": company, role, link, and stage. Never your notes.</p>
+    <div class="acts">
+      <button class="b" type="button" id="export-leads">Download leads file</button>
+      <button class="b" type="button" id="copy-leads">Copy leads as text</button>
+    </div>
+
+    <h2>Erase</h2>
+    <div class="acts"><button class="b" type="button" id="erase">Erase everything on this device</button></div>
+  </section>
+
+  <pre id="copy-fallback" hidden></pre>
+</div>
+
+<script id="prompt-data" type="application/json">[{"id":"00-profile-card","title":"0. Your profile card","when":"fill it once (prompt 1 helps), keep it in the kit page or a phone note, and paste it into every other prompt.","text":"MY PROFILE CARD\nName (first name is enough):\nStatus (for example: junior, graduating May 2027; or new grad since June 2026):\nSchool and major (optional):\nLooking for (internship / full-time new grad / part-time / contract):\nTarget roles (up to 3, from prompt 1):\nWhere I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no):\nWork authorization (can work in __ without sponsorship: yes or no):\nPay floor (the lowest I will take, hourly or yearly, from my own research):\nHours and start date:\nMy process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets):\nDealbreakers:\nStrongest evidence (3 lines, each a real thing I did, with a number if I have one):\nProof I can link (project, portfolio, GitHub, writing sample):\nGroups I belong to (optional: church, campus ministry, club, alumni group):\nFacts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels):"},{"id":"01-role-profile","title":"1. Build your role profile","when":"first, once. Again after a new job, internship, or big project.","text":"You are helping a college student or new grad see which jobs they can honestly go after now. Rules: use only the facts I paste. Never invent experience, numbers, or skills. Label anything you infer as \"inference\". If you do not know, write \"unknown\".\n\nMy background (resume text, classes, projects, jobs, clubs, volunteering, anything):\n[PASTE YOUR BACKGROUND HERE]\n\nWhat I think I want (a sentence, or \"not sure\"):\n[ANSWER HERE]\n\nDo these steps, in order:\n1. List 5 to 8 role families I could apply to now, with the job titles employers use for each.\n2. For each family give: the evidence from my background (quote it), my level (intern, entry level, or stretch), and a strength: Strong (direct, recent evidence), Moderate (real but thin), or Weak (would not survive one focused interview question).\n3. One line each: how it fits what I said I want.\n4. Claims to fix: any fact I state two different ways, any claim bigger than its evidence, any number with no source. Give the honest version.\n5. For my top 2 families: the one skill or proof piece that would most raise my strength, and a free way to get it in 2 weeks.\n6. Fill in my profile card below. Leave a field blank if I did not give you the fact, and write ASK ME where you need my answer.\n\n[PASTE YOUR PROFILE CARD HERE]\n\nFormat: a table for steps 1 to 3, then short lines. Plain words."},{"id":"02-match-test","title":"2. Honest fit check on a job post","when":"before you spend more than 2 minutes on an application, and before you ask anyone to refer you.","text":"Act as a careful, honest fit checker for a student or new grad. Use only my profile card and the job post below. Never mark Pass on a guess; use Unknown. For each check, quote the line of the post you used.\n\nMy profile card:\n[PASTE YOUR PROFILE CARD HERE]\n\nThe job post (the text, not a link):\n[PASTE THE JOB POST HERE]\n\nStep 0. Is it real? List any scam sign: money, equipment, or bank details asked before an offer; interview only by chat app; an offer with no interview; pay far above normal for little work; a free email address for a company; company facts that change or cannot be found. If you see one, write STOP with the reason and skip the rest.\n\nStep 1. Is this one of the target roles on my card? Answer yes, stretch, or no, with one line of evidence from my card.\n\nStep 2. Score 5 checks as Pass, Fail, or Unknown:\n1. Graduation window and eligibility: my graduation date fits the start date or class year they want, and I meet any degree, major, GPA, or \"currently enrolled\" rule.\n2. Work authorization: what they require or sponsor fits what my card says.\n3. Level: Pass for internship, new grad, entry level, or no years stated. Watch the trap: a post titled \"entry level\" that asks for \"3+ years required\" fails. \"Preferred\" years alone do not fail. Fail for a Senior title or required years I do not have.\n4. Location: the place and the days onsite fit my card.\n5. Process: the interview steps fit my process rules (take-home length, AI-tool policy). Unknown if not stated.\n\nStep 3. Pay: if the post gives a range, say whether its top reaches my floor. If not, list it as a question.\n\nStep 4. Verdict, one of:\nAPPLY: no Fail, role is yes or stretch. List each Unknown, and pay if unknown, as questions for my first conversation.\nSKIP: any Fail, or role is no. Name the first reason in one line.\nSTOP: a scam sign from step 0.\n\nStep 5. If APPLY: write a 3-line note for the application that names one real detail from this post and one real thing from my card. No buzzwords. Nothing that is not on my card.\n\nStep 6. One honest sentence on my chances, and the one thing that would raise them most.\n\nFormat: a table for step 2 (check, result, quoted line), then short lines."},{"id":"03-scam-check","title":"3. Scam check on a message","when":"any email, text, Handshake, or LinkedIn message about a job that you did not ask for, before you click anything or reply.","text":"Check this job message for scam signs before I click anything or reply. Use only what is in the message. Be specific and calm.\n\nMy profile card (for context only):\n[PASTE YOUR PROFILE CARD HERE]\n\nThe message (paste all of it, including the sender's name, email address or phone number, and any links as text):\n[PASTE THE MESSAGE HERE]\n\n1. Kind: a real person about a real role / job alert or newsletter / interview scheduling for a job I applied to / rejection / offer / likely scam / not sure.\n2. Signs. Check each and say yes or no, quoting the line: money, a check, gift cards, or bank details asked before a real offer; buying equipment from \"their vendor\"; interview only by text or chat app; an offer with no interview; pay far above normal for simple work; a free email address (gmail, outlook, and so on) for a company; a sender whose company, title, or role does not match or changes; odd spelling or mixed alphabets in names; pressure to act today; a link or file to open before anything is confirmed; asks for my address, ID, or Social Security number early.\n3. Verdict: LIKELY SCAM, CHECK FIRST, or LOOKS REAL, with the two strongest reasons.\n4. What to do next, in 3 steps or fewer. For LIKELY SCAM or CHECK FIRST: do not click links or open files; find the company's real website by searching its name yourself; contact them through that site; report the message to the platform it came through.\n5. If it looks real and is about a job, say \"Run prompt 2 on the job post next.\" Do not write a reply."},{"id":"04-warm-ask","title":"4. Ask someone in your field for help","when":"you found a person who works in your field (through your church, campus ministry, club, alumni group, or a coordinator who matched you), and you want a short call, a resume look, a mock interview, or, for a role you fit, a referral.","text":"Help me write a short message asking someone in my field for help. Use only the facts I give. Under 80 words. One clear ask. Warm, plain, not flattering, and easy for them to say no to. Signed with my first name.\n\nMy profile card:\n[PASTE YOUR PROFILE CARD HERE]\n\nWho they are and how I know of them (for example: \"works as a data analyst at a hospital; we are both in the same church; the career team matched us\"):\n[WHO THEY ARE]\n\nWhat I am asking for (pick one: a 20-minute call / a look at my resume / a mock interview / a referral for one role):\n[MY ASK]\n\nIf I am asking about one role, my fit check result for it (paste the verdict and table from prompt 2):\n[PASTE THE FIT CHECK HERE, OR WRITE NONE]\n\n1. If my ask is a referral and the fit check is not APPLY, or there is none: say so, and write the message as a 20-minute call ask instead.\n2. Write the message. Say how I know of them in one line, what I am studying or doing in one line, the one ask, and offer 2 or 3 evening or weekend times as [TIME 1], [TIME 2], [TIME 3]. End with a line that makes no easy: \"If now's not a good time, no worries at all.\"\n3. Write a 2-line thank-you I can send after, with a [ONE THING I LEARNED] slot.\n4. Write a 2-line follow-up for one week later if they do not answer. After that, I let it go."},{"id":"05-mock-interview","title":"5. Get ready for a mock interview with someone in your field","when":"a member, alum, or mentor in your field agreed to run a practice interview with you.","text":"Help me prepare for a practice interview with someone who works in my field. Use only my card and the post. Label anything you guess as \"guess\". Do not invent experience for me.\n\nMy profile card:\n[PASTE YOUR PROFILE CARD HERE]\n\nThe job post I am practicing for (or the kind of role, if there is no post):\n[PASTE THE JOB POST HERE]\n\nWhat my helper does (one line):\n[WHAT THEY DO]\n\n1. A message to send them 2 days ahead, under 80 words: thanks, the post or role, my resume is attached, and the one area I most want practice on.\n2. The 8 questions this kind of interview most likely asks: 3 about my background, 3 about the work itself (technical or case questions for this field), 2 about how I work with people. Mark which ones the post points to, quoting the line.\n3. For each of my 3 strongest evidence lines on the card: a 4-sentence story I could tell (what was the situation, what I did, what happened, what I learned). Use only what is on the card; where a number is my estimate, keep the word \"estimate\".\n4. The 2 places in my card a real interviewer is most likely to push on, and an honest way to answer.\n5. Three questions to ask my helper at the end, for example: \"What would make you hesitate to hire me?\", \"What does a strong answer to the work question sound like on your team?\", \"What should I learn first?\"\n6. A thank-you message for after, under 60 words, with a [ONE THING I WILL CHANGE] slot."},{"id":"06-proof-of-work","title":"6. Plan a proof-of-work prototype","when":"a role you really want, where a resume alone will not stand out.","text":"Help me plan a small proof-of-work project for one job. Be honest about what I can build in the time I have. Use only public information. Do not use the company's logo or private data, and label it as an unofficial work sample.\n\nMy profile card:\n[PASTE YOUR PROFILE CARD HERE]\n\nThe job post (the text):\n[PASTE THE JOB POST HERE]\n\nTime I have: [for example, one evening, about 3 hours]\nTools I know or can use for free: [for example, Google Sheets, Python, Figma, a plain web page]\n\n1. Give 3 ideas. Each is one step of the work in this post, small enough for my time. For each: the line of the post it comes from, what I would build, and which public source its rules come from.\n2. Pick the best one for me and say why in two lines.\n3. List the rules it follows, each tied to a quoted line of the post or the public source, numbered R1, R2, and so on.\n4. List the open questions: decisions only the company could make. I will write these down instead of guessing.\n5. Give a build plan in steps of an hour or less.\n6. Give a README outline: what it does, how to run it, what I decided and why, what is left, open questions, credit to any source.\n7. Write the 3-line note I would send with it: what I built, the one decision I'd most like their view on, and the link."},{"id":"07-weekly-review","title":"7. Weekly review","when":"once a week, same day. Right before your job club meets works well.","text":"Run my weekly job-search review. Be honest and kind. Separate facts from inferences and label each. Do not cheer me up with things that are not true, and do not be harsh either.\n\nMy profile card:\n[PASTE YOUR PROFILE CARD HERE]\n\nMy week (paste your row from the job club sheet, or a list: what I applied to, who I asked for help, what came back):\n[PASTE YOUR WEEK HERE]\n\n1. What happened: applications, replies, interviews, rejections, offers, with counts.\n2. What came back: any reason a company gave, quoted.\n3. What I learned: each line labeled Fact or Inference. Look for patterns: which role families or levels got replies, which got none, where applications went that my own card says to skip.\n4. Claims check: anything I said differently in two places this week (dates, skills, levels).\n5. Next week, at most 3 changes. Keep applying: every role that passes the fit check gets a short note naming one real detail from the post. Add one proof-of-work step if I have a role I really want.\n6. One kind of person I could ask for advice this week (a field, not a name), and what to ask them. Prompt 4 will write the message.\n7. One line for my job club sheet: my goal for next week."},{"id":"08-polish-resume-lines","title":"8. Polish your resume lines (optional)","when":"after the kit page's Resume tab has turned your experience log into lines, and you want them tighter.","text":"Tighten these resume lines for a student or new grad. Rules: keep every fact; add no facts, tools, numbers, or results I did not write. Keep the word \"About\" wherever a number is an estimate. Each line starts with a strong past-tense verb (present tense if the entry ends in \"now\") and stays under 20 words. Name the group as I named it; do not hide or rename it.\n\nMy profile card:\n[PASTE YOUR PROFILE CARD HERE]\n\nMy lines (from my experience log):\n[PASTE YOUR EXPERIENCE LINES HERE]\n\nA job post I am aiming at (optional; write NONE if there is none):\n[PASTE THE JOB POST HERE, OR WRITE NONE]\n\n1. Rewrite each line. Show the old line and the new line.\n2. Mark any line you could not improve without inventing something, and give me one question to ask myself that would make it stronger (for example: \"How many people came?\").\n3. If I gave a job post: pick the 3 lines that matter most for it, quoting the line of the post each one answers.\n4. List any line that sounds bigger than the facts behind it, and the honest version."}]</script>
+<script>
+(function () {
+  "use strict";
+  const KEY = "student-job-toolkit-v1";
+  const STAGES = ["Saved", "Applied", "Talking", "Interview", "Offer", "Closed"];
+  const SOURCES = ["Job board", "School career site", "LinkedIn", "Career fair", "Referral", "Recruiter reached out", "Company site", "Friend's lead", "Other"];
+  const VERDICTS = ["Not checked", "Apply", "Ask first", "Skip", "Stop: scam signs"];
+  const TABS = [["log", "Experience"], ["resume", "Resume lines"], ["card", "Card"], ["prompts", "Prompts"], ["jobs", "Jobs"], ["backup", "Backup"]];
+  const PROMPTS = JSON.parse(document.getElementById("prompt-data").textContent || "[]");
+  const CARD_TEMPLATE = (PROMPTS.find((p) => p.id === "00-profile-card") || {}).text || "MY PROFILE CARD\n";
+  const $ = (id) => document.getElementById(id);
+
+  // Storage: test that it really persists, and say so plainly when it does not.
+  let canStore = false;
+  try { localStorage.setItem(KEY + "-test", "1"); canStore = localStorage.getItem(KEY + "-test") === "1"; localStorage.removeItem(KEY + "-test"); } catch (e) { canStore = false; }
+  let state = { v: 1, card: "", jobs: [], exp: [], lastExport: "", tab: "log", filter: "Open" };
+  try { const raw = canStore && localStorage.getItem(KEY); if (raw) state = Object.assign(state, JSON.parse(raw)); } catch (e) {}
+  if (!state.card) state.card = CARD_TEMPLATE;
+  if (!Array.isArray(state.exp)) state.exp = [];
+  if (!TABS.some(([k]) => k === state.tab)) state.tab = "log";
+  function save() {
+    if (!canStore) { setSave(); return; }
+    try { localStorage.setItem(KEY, JSON.stringify(state)); setSave(); }
+    catch (e) { canStore = false; setSave(); }
+  }
+  function setSave() {
+    const s = $("save");
+    if (!canStore) { s.textContent = "Not saving in this browser. Download a backup before you close it."; s.className = "save bad"; return; }
+    s.textContent = "Saved on this device " + new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    s.className = "save";
+  }
+
+  const today = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+  const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+  const now = () => new Date().toISOString();
+  const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function btn(label, fn, cls, id) { const b = el("button", "b" + (cls ? " " + cls : ""), label); b.type = "button"; if (id) b.id = id; b.onclick = fn; return b; }
+  function safeLink(u) { return typeof u === "string" && /^https?:\/\//i.test(u) ? u : ""; }
+  function log(j, what) { j.history = j.history || []; j.history.push({ at: now(), what: what }); j.updated = now(); }
+
+  // Navigation
+  function renderNav() {
+    const nav = $("nav"); nav.textContent = "";
+    for (const [k, label] of TABS) {
+      const b = el("button", null, label); b.type = "button"; b.id = "tab-" + k;
+      b.setAttribute("aria-pressed", String(state.tab === k));
+      b.onclick = () => { state.tab = k; save(); render(); };
+      nav.append(b);
+    }
+    for (const [k] of TABS) $("v-" + k).hidden = state.tab !== k;
+  }
+
+  // A job row, with the Job Hub's three taps: Done, Snooze, Not for me.
+  function rowEl(j, showActs) {
+    const isDue = j.stage !== "Closed" && j.due && j.due <= today();
+    const r = el("div", "row" + (isDue && showActs ? " due" : ""));
+    const top = el("div", "top");
+    top.append(el("div", "t", j.company + " : " + j.role), el("span", "pill" + (j.stage === "Closed" ? " idle" : ""), j.stage));
+    r.append(top);
+    const meta = [j.source, j.verdict && j.verdict !== "Not checked" ? "match: " + j.verdict : "", j.due ? (isDue ? "due " : "next ") + j.due : ""].filter(Boolean).join("  ·  ");
+    if (meta) r.append(el("div", "m", meta));
+    if (j.next) r.append(el("div", "n", "Next: " + j.next));
+    const link = safeLink(j.link);
+    if (link) { const a = el("a", null, "Open the post"); a.href = link; a.target = "_blank"; a.rel = "noopener noreferrer"; const n = el("div", "n"); n.append(a); r.append(n); }
+    const acts = el("div", "acts");
+    if (showActs && j.stage !== "Closed") {
+      acts.append(
+        btn("Done", () => doneStep(j), "primary", "done-" + j.id),
+        btn("Snooze 3 days", () => { j.due = addDays(today(), 3); log(j, "snoozed to " + j.due); save(); render(); }, null, "snooze-" + j.id),
+        btn("Not for me", () => { j.stage = "Closed"; j.due = ""; j.next = ""; log(j, "closed: not for me"); save(); render(); }, null, "close-" + j.id)
+      );
+    }
+    acts.append(btn("Edit", () => editJob(j), null, "edit-" + j.id));
+    r.append(acts);
+    return r;
+  }
+  function doneStep(j) {
+    log(j, "done: " + (j.next || "step"));
+    j.next = ""; j.due = "";
+    save(); editJob(j, "Step done. What is the next step for " + j.company + "?");
+  }
+
+  function renderToday() {
+    const open = state.jobs.filter((j) => j.stage !== "Closed");
+    const due = open.filter((j) => j.due && j.due <= today()).sort((a, b) => a.due.localeCompare(b.due));
+    const list = $("today-list"); list.textContent = "";
+    if (due.length) due.forEach((j) => list.append(rowEl(j, true)));
+    else {
+      const e = el("div", "empty");
+      e.append(el("p", null, state.jobs.length ? "Nothing due today." : "No jobs yet. Run the fit check (prompt 2) on a post, then add it below."));
+      e.append(el("p", null, "Pick one thing that moves the search forward: one careful application, one reply, or one hour on a proof-of-work project."));
+      list.append(e);
+    }
+    const weekAgo = new Date(Date.now() - 7 * 864e5).toISOString();
+    const appliedThisWeek = state.jobs.filter((j) => (j.history || []).some((h) => h.at >= weekAgo && /stage: Applied/.test(h.what))).length;
+    const items = [
+      [appliedThisWeek, "applications this week"],
+      [open.filter((j) => j.stage === "Talking").length, "talking"],
+      [open.filter((j) => j.stage === "Interview").length, "interviews"],
+      [open.filter((j) => j.stage === "Offer").length, "offers"],
+    ];
+    const st = $("stats"); st.textContent = "";
+    for (const [n, label] of items) { const s = el("div", "stat"); s.append(el("b", null, String(n)), el("span", null, label)); st.append(s); }
+  }
+
+  // Jobs form and list
+  function fillSelect(name, opts) { const s = $("form").elements[name]; s.textContent = ""; for (const o of opts) s.append(new Option(o, o)); }
+  fillSelect("source", SOURCES); fillSelect("stage", STAGES); fillSelect("verdict", VERDICTS);
+  function resetForm() {
+    const f = $("form"); f.reset(); f.elements.id.value = "";
+    $("form-h").textContent = "Add a job"; $("cancel-edit").hidden = true;
+  }
+  function editJob(j, heading) {
+    const f = $("form");
+    for (const k of ["id", "company", "role", "link", "source", "stage", "verdict", "due", "next", "notes"]) f.elements[k].value = j[k] || "";
+    f.elements.share.checked = !!j.share;
+    $("form-h").textContent = heading || "Edit " + j.company;
+    $("cancel-edit").hidden = false;
+    state.tab = "jobs"; save(); render();
+    f.scrollIntoView({ block: "start" });
+    f.elements[heading ? "next" : "company"].focus();
+  }
+  $("cancel-edit").onclick = () => { resetForm(); };
+  $("form").onsubmit = (ev) => {
+    ev.preventDefault();
+    const f = ev.target;
+    const v = (k) => f.elements[k].value.trim();
+    let j = state.jobs.find((x) => x.id === v("id"));
+    const isNew = !j;
+    if (isNew) { j = { id: newId(), created: now(), history: [] }; state.jobs.unshift(j); }
+    const oldStage = isNew ? "" : j.stage;
+    Object.assign(j, { company: v("company"), role: v("role"), link: v("link"), source: v("source"), stage: v("stage"), verdict: v("verdict"), due: v("due"), next: v("next"), notes: v("notes"), share: f.elements.share.checked });
+    log(j, isNew ? "added" : "edited");
+    if (j.stage !== oldStage) log(j, "stage: " + j.stage);
+    save(); resetForm(); render();
+  };
+  function renderJobs() {
+    const box = $("filters"); box.textContent = "";
+    for (const k of ["Open", ...STAGES, "All"]) {
+      const n = k === "All" ? state.jobs.length : k === "Open" ? state.jobs.filter((j) => j.stage !== "Closed").length : state.jobs.filter((j) => j.stage === k).length;
+      const b = el("button", null, k + " " + n); b.type = "button"; b.id = "filter-" + k;
+      b.setAttribute("aria-pressed", String(state.filter === k));
+      b.onclick = () => { state.filter = k; save(); renderJobs(); };
+      box.append(b);
+    }
+    const shown = state.jobs.filter((j) => state.filter === "All" || (state.filter === "Open" ? j.stage !== "Closed" : j.stage === state.filter));
+    const list = $("job-list"); list.textContent = "";
+    if (shown.length) shown.forEach((j) => list.append(rowEl(j, true)));
+    else list.append(el("div", "empty", state.jobs.length ? "Nothing in this group." : "Add your first job above. Run the fit check (prompt 2) on it first, and record the verdict."));
+  }
+
+  // Prompts, with the profile card pasted in
+  function fillPrompt(p) { return p.text.split("[PASTE YOUR PROFILE CARD HERE]").join(state.card.trim()); }
+  async function copyText(text, okEl, okMsg) {
+    let ok = false;
+    try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); ok = true; } } catch (e) {}
+    if (!ok) {
+      const t = document.createElement("textarea"); t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.append(t); t.select(); try { ok = document.execCommand("copy"); } catch (e) {} t.remove();
+    }
+    if (okEl) okEl.textContent = ok ? okMsg : "Could not copy here. Select the text below and copy it.";
+    return ok;
+  }
+  function renderPrompts() {
+    const list = $("prompt-list"); list.textContent = "";
+    for (const p of PROMPTS) {
+      if (p.id === "00-profile-card") continue;
+      const r = el("div", "row");
+      r.append(el("h3", null, p.title));
+      if (p.when) r.append(el("div", "m", "When: " + p.when));
+      const msg = el("span", "ok"); msg.setAttribute("aria-live", "polite");
+      const pre = el("pre"); pre.hidden = true;
+      const acts = el("div", "acts");
+      acts.append(btn("Copy with my card", async () => {
+        const text = fillPrompt(p);
+        pre.textContent = text;
+        const ok = await copyText(text, msg, "Copied. Paste it into a new chat.");
+        if (!ok) pre.hidden = false;
+      }, "primary", "copy-" + p.id), msg);
+      r.append(acts);
+      const d = el("details"); d.append(el("summary", null, "Show the prompt")); const dp = el("pre", null, p.text); d.append(dp);
+      r.append(d, pre);
+      list.append(r);
+    }
+  }
+
+  // Card
+  $("card").addEventListener("input", (ev) => { state.card = ev.target.value; save(); $("card-saved").textContent = canStore ? "Saved" : ""; });
+  $("card-reset").onclick = () => { if (confirm("Replace your card with a blank one?")) { state.card = CARD_TEMPLATE; save(); render(); } };
+
+  // Backup, leads and the weekly summary
+  function download(name, text) {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+    a.download = name; document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  }
+  function backupText() { return JSON.stringify({ kind: "student-job-toolkit-backup", v: 1, card: state.card, jobs: state.jobs, exp: state.exp }, null, 1); }
+  function leadsText() {
+    const leads = state.jobs.filter((j) => j.share).map((j) => ({ id: j.id, company: j.company, role: j.role, link: safeLink(j.link), stage: j.stage === "Closed" ? "Closed" : "Saved", updated: j.updated }));
+    return JSON.stringify({ kind: "student-job-toolkit-leads", v: 1, jobs: leads }, null, 1);
+  }
+  function markExported() { state.lastExport = now(); save(); renderBackup(); }
+  $("export").onclick = () => { download("job-tracker-backup-" + today() + ".json", backupText()); markExported(); };
+  $("copy-backup").onclick = async () => { const t = backupText(); $("copy-fallback").textContent = t; if (await copyText(t, $("import-msg"), "Backup copied. Paste it into a note or email to yourself.")) markExported(); else $("copy-fallback").hidden = false; };
+  $("export-leads").onclick = () => download("job-leads-" + today() + ".json", leadsText());
+  $("copy-leads").onclick = async () => { const t = leadsText(); $("copy-fallback").textContent = t; if (!(await copyText(t, $("import-msg"), "Leads copied. Paste them to your friends."))) $("copy-fallback").hidden = false; };
+  function weekText() {
+    const weekAgo = new Date(Date.now() - 7 * 864e5).toISOString();
+    const lines = ["MY JOB SEARCH WEEK, ending " + today()];
+    const byStage = STAGES.map((s) => s + " " + state.jobs.filter((j) => j.stage === s).length).join(", ");
+    lines.push("Totals by stage: " + byStage);
+    lines.push("What happened this week:");
+    let any = false;
+    for (const j of state.jobs) {
+      const hs = (j.history || []).filter((h) => h.at >= weekAgo && h.what !== "edited");
+      if (!hs.length) continue;
+      any = true;
+      lines.push("- " + j.company + ", " + j.role + " (now " + j.stage + (j.verdict && j.verdict !== "Not checked" ? ", match " + j.verdict : "") + "): " + hs.map((h) => h.what).join("; "));
+    }
+    if (!any) lines.push("- nothing logged");
+    const next = state.jobs.filter((j) => j.stage !== "Closed" && j.next).map((j) => "- " + j.company + ": " + j.next + (j.due ? " (" + j.due + ")" : ""));
+    if (next.length) lines.push("Open next steps:", ...next);
+    return lines.join("\n");
+  }
+  $("copy-week").onclick = async () => { const t = weekText(); const pre = $("week-text"); pre.textContent = t; pre.hidden = false; await copyText(t, $("import-msg"), "Weekly summary copied."); };
+  function mergeIn(text) {
+    let data;
+    try { data = JSON.parse(text); } catch (e) { return "That is not a backup or leads file."; }
+    const jobs = Array.isArray(data && data.jobs) ? data.jobs : null;
+    if (!jobs) return "That file has no jobs in it.";
+    const expAdded = data.kind === "student-job-toolkit-backup" ? mergeExp(data.exp) : 0;
+    const isLeads = data.kind === "student-job-toolkit-leads";
+    let added = 0, updated = 0;
+    for (const x of jobs) {
+      if (!x || typeof x.company !== "string" || typeof x.role !== "string") continue;
+      const clean = { id: String(x.id || newId()), company: x.company.slice(0, 200), role: x.role.slice(0, 200), link: safeLink(x.link), source: isLeads ? "Friend's lead" : String(x.source || "Other"), stage: STAGES.includes(x.stage) ? x.stage : "Saved", verdict: VERDICTS.includes(x.verdict) ? x.verdict : "Not checked", due: /^\d{4}-\d{2}-\d{2}$/.test(x.due || "") ? x.due : "", next: String(x.next || "").slice(0, 500), notes: isLeads ? "" : String(x.notes || "").slice(0, 5000), share: !isLeads && !!x.share, created: String(x.created || now()), updated: String(x.updated || now()), history: Array.isArray(x.history) && !isLeads ? x.history.filter((h) => h && typeof h.what === "string").map((h) => ({ at: String(h.at), what: h.what.slice(0, 300) })) : [] };
+      const mine = state.jobs.find((j) => j.id === clean.id);
+      if (!mine) { if (isLeads) clean.history.push({ at: now(), what: "lead from a friend" }); state.jobs.push(clean); added++; }
+      else if (!isLeads && clean.updated > (mine.updated || "")) { Object.assign(mine, clean); updated++; }
+    }
+    if (!isLeads && typeof data.card === "string" && data.card.trim() && (state.card === CARD_TEMPLATE || !state.card.trim())) state.card = data.card;
+    save(); render();
+    return "Added " + added + ", updated " + updated + (expAdded ? ", and " + expAdded + " log entries" : "") + ". Nothing was deleted.";
+  }
+  $("import-file").onchange = (ev) => {
+    const file = ev.target.files && ev.target.files[0]; if (!file) return;
+    const rd = new FileReader();
+    rd.onload = () => { $("import-msg").textContent = mergeIn(String(rd.result)); ev.target.value = ""; };
+    rd.readAsText(file);
+  };
+  $("import-paste").onclick = () => { $("import-msg").textContent = mergeIn($("import-text").value); $("import-text").value = ""; };
+  $("erase").onclick = () => {
+    if (!confirm("Erase your log, every job and your card from this device? Download a backup first if you want to keep them.")) return;
+    state = { v: 1, card: CARD_TEMPLATE, jobs: [], exp: [], lastExport: "", tab: "log", filter: "Open" };
+    save(); render();
+  };
+  function renderBackup() {
+    const last = state.lastExport;
+    const days = last ? Math.floor((Date.now() - Date.parse(last)) / 864e5) : null;
+    $("last-backup").textContent = last ? "Last backup " + (days === 0 ? "today" : days + " day" + (days === 1 ? "" : "s") + " ago") + (days >= 7 ? ". Time for a new one." : ".") : "No backup yet. Browsers can clear saved pages, so keep a copy.";
+  }
+
+
+  // Experience log: entries become resume lines through plain templates, no AI.
+  const WEAK = { helped: "say what you did: Led, Taught, Built, Ran, Organized, Designed", assisted: "say what you did yourself", was: "start with what you did", did: "name the action", worked: "say what you made or changed", responsible: "start with the action you took", participated: "say what your part was", involved: "say what your part was", volunteered: "say what the volunteering was: Taught, Served, Set up" };
+  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const mon = (m) => (/^\d{4}-\d{2}$/.test(m || "") ? MONTHS[Number(m.slice(5)) - 1] + " " + m.slice(0, 4) : "");
+  const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+  const stop = (t) => (/[.!?]$/.test(t) ? t : t + ".");
+  function firstName() { const m = state.card.match(/^Name[^:]*:[ \t]*([^\n]+)$/m); return m ? m[1].trim().split(/\s+/)[0] : "[your first name]"; }
+  function linesFor(x) {
+    const dates = mon(x.start) ? mon(x.start) + " to " + (mon(x.end) || "now") : "";
+    const hrs = String(x.hours || "").trim();
+    const hoursText = !hrs ? "" : /^\d+(\.\d+)?$/.test(hrs) ? "about " + hrs + " hours" : hrs.replace(/^(\d+(\.\d+)?) (a|per) week$/i, "$1 hours a week");
+    const head = [x.role ? x.role + ": " + (x.what || "") : x.what, x.group].filter(Boolean).join(", ") + (dates ? ", " + dates : "") + (hoursText ? " (" + hoursText + ")" : "");
+    const bullets = [];
+    const notes = [];
+    String(x.did || "").split("\n").map((l) => l.replace(/^[\s\-*•]+/, "").trim()).filter(Boolean).forEach((l, i) => {
+      const w = l.split(/\s+/)[0].toLowerCase().replace(/[^a-z]/g, "");
+      if (WEAK[w]) notes.push("Line " + (i + 1) + " starts with \"" + w + "\": " + WEAK[w] + ".");
+      else if (/ing$/.test(w)) notes.push("Line " + (i + 1) + " starts with \"" + w + "\": past tense reads better (for example \"" + cap(w.replace(/ing$/, "ed")) + "\", check the spelling).");
+      bullets.push(stop(cap(l)));
+    });
+    if (x.made) bullets.push(stop("Made " + x.made.replace(/^made\s+/i, "")));
+    if (x.reach) bullets.push(stop((x.estimate && !/^about\b/i.test(x.reach) ? "About " + x.reach : cap(x.reach))));
+    if (!bullets.length) notes.push("Add at least one line under What you did.");
+    if (!dates) notes.push("Add a start month. Dates make a line believable.");
+    if (!hrs) notes.push("Add hours. \"About 40 hours\" tells an employer how big it was.");
+    const hasNum = /\d/.test([x.did, x.reach, x.made].join(" "));
+    if (hasNum && !x.estimate) notes.push("You used a number. If it is a guess, tick \"The numbers are my estimate\" and the line will say \"About\".");
+    if (!hasNum) notes.push("A number helps if you have a real one: how many people, how many weeks, how many events.");
+    if (x.adult && !x.confirmed) notes.push("Ask " + x.adult + " to confirm this entry. The message below is ready to copy.");
+    return { head: head, bullets: bullets, notes: notes };
+  }
+  function entryText(x) { const r = linesFor(x); return [r.head, ...r.bullets.map((b) => "- " + b)].join("\n"); }
+  function confirmText(x) {
+    return "Hi " + (x.adult || "[name]") + ",\n\nI'm putting together my resume and would like to list " + (x.what || "this") + (mon(x.start) ? " (" + mon(x.start) + " to " + (mon(x.end) || "now") + ")" : "") + ". Could you tell me if this is accurate?\n\n" + entryText(x) + "\n\nWould you also be willing to be a reference for internships or jobs? It's completely fine to say no.\n\nThanks,\n" + firstName();
+  }
+  function renderExp() {
+    const list = $("exp-list"); list.textContent = "";
+    if (!state.exp.length) { list.append(el("div", "empty", "Nothing logged yet. Start with one thing you did this year, even a small one.")); return; }
+    for (const x of state.exp) {
+      const r = el("div", "row");
+      const top = el("div", "top");
+      top.append(el("div", "t", x.what), el("span", "pill" + (x.confirmed ? "" : " idle"), x.confirmed ? "confirmed" : "not confirmed"));
+      r.append(top);
+      const meta = [x.role, x.group, mon(x.start) ? mon(x.start) + " to " + (mon(x.end) || "now") : "", x.hours ? x.hours + " h" : ""].filter(Boolean).join("  ·  ");
+      if (meta) r.append(el("div", "m", meta));
+      const acts = el("div", "acts");
+      acts.append(btn("Edit", () => editExp(x), null, "edit-exp-" + x.id), btn("Delete", () => { if (confirm("Delete this entry?")) { state.exp = state.exp.filter((y) => y.id !== x.id); save(); render(); } }, null, "del-exp-" + x.id));
+      r.append(acts);
+      list.append(r);
+    }
+  }
+  const EXP_FIELDS = ["id", "what", "role", "group", "start", "end", "hours", "did", "made", "reach", "skills", "adult", "adultRole"];
+  const EXP_CHECKS = ["estimate", "confirmed", "reference"];
+  function resetExp() { const f = $("exp-form"); f.reset(); f.elements.id.value = ""; $("exp-h").textContent = "Log something you did"; $("cancel-exp").hidden = true; }
+  function editExp(x) {
+    const f = $("exp-form");
+    for (const k of EXP_FIELDS) f.elements[k].value = x[k] || "";
+    for (const k of EXP_CHECKS) f.elements[k].checked = !!x[k];
+    $("exp-h").textContent = "Edit " + x.what; $("cancel-exp").hidden = false;
+    state.tab = "log"; save(); render(); f.scrollIntoView({ block: "start" }); f.elements.what.focus();
+  }
+  $("cancel-exp").onclick = resetExp;
+  $("exp-form").onsubmit = (ev) => {
+    ev.preventDefault();
+    const f = ev.target;
+    let x = state.exp.find((y) => y.id === f.elements.id.value);
+    if (!x) { x = { id: newId(), created: now() }; state.exp.unshift(x); }
+    for (const k of EXP_FIELDS.slice(1)) x[k] = f.elements[k].value.trim();
+    for (const k of EXP_CHECKS) x[k] = f.elements[k].checked;
+    if (x.end && x.start && x.end < x.start) { const t = x.end; x.end = x.start; x.start = t; }
+    x.updated = now();
+    save(); resetExp(); render();
+  };
+  function sortedExp() { return state.exp.slice().sort((a, b) => String(b.end || "9999").localeCompare(String(a.end || "9999")) || String(b.start).localeCompare(String(a.start))); }
+  function renderResume() {
+    const list = $("resume-list"); list.textContent = "";
+    if (!state.exp.length) { list.append(el("div", "empty", "Log an entry on the Experience tab first.")); }
+    for (const x of sortedExp()) {
+      const r = linesFor(x);
+      const row = el("div", "row");
+      row.append(el("div", "t", r.head));
+      const pre = el("pre", null, r.bullets.map((b) => "- " + b).join("\n") || "(no lines yet)"); row.append(pre);
+      if (r.notes.length) { const ul = el("ul", "note"); for (const n of r.notes) ul.append(el("li", null, n)); row.append(ul); }
+      if (x.adult && !x.confirmed) {
+        const msg = el("span", "ok"); const acts = el("div", "acts");
+        acts.append(btn("Copy a confirm message to " + x.adult, async () => { const t = confirmText(x); pre.textContent = r.bullets.map((b) => "- " + b).join("\n"); if (!(await copyText(t, msg, "Copied. Send it the way you usually talk to them."))) { $("copy-fallback").textContent = t; $("copy-fallback").hidden = false; } }, null, "confirm-" + x.id), msg);
+        row.append(acts);
+      }
+      list.append(row);
+    }
+    const sk = {};
+    for (const x of sortedExp()) for (const raw of String(x.skills || "").split(",").map((t) => t.trim()).filter(Boolean)) {
+      const k = raw.toLowerCase();
+      if (!sk[k]) sk[k] = { name: raw, n: 0, ex: "", exact: false };
+      sk[k].n++;
+      if (raw !== raw.toLowerCase() && sk[k].name === sk[k].name.toLowerCase()) sk[k].name = raw;
+      const b = linesFor(x).bullets; const hit = b.find((l) => l.toLowerCase().includes(k));
+      // Prefer a line that names the skill; otherwise the entry's first line.
+      if (hit && !sk[k].exact) { sk[k].ex = hit.replace(/\.$/, "") + " (" + x.what + ")"; sk[k].exact = true; }
+      else if (!sk[k].ex && b[0]) sk[k].ex = b[0].replace(/\.$/, "") + " (" + x.what + ")";
+    }
+    const sl = $("skills-list"); sl.textContent = "";
+    const keys = Object.keys(sk).sort((a, b) => sk[b].n - sk[a].n || a.localeCompare(b));
+    if (!keys.length) sl.append(el("div", "empty", "Add skills to your entries to see them here, each with an example."));
+    for (const k of keys) { const r = el("div", "row"); r.append(el("div", "t", cap(sk[k].name) + (sk[k].n > 1 ? " (shown in " + sk[k].n + " entries)" : "")), el("div", "n", sk[k].ex ? "Example: " + sk[k].ex : "Add a line under What you did that shows this.")); sl.append(r); }
+    const refs = $("ref-list"); refs.textContent = "";
+    const rs = state.exp.filter((x) => x.adult && x.reference);
+    if (!rs.length) refs.append(el("div", "empty", "No references yet. When an adult who saw your work confirms an entry, ask if they would be a reference, and tick the box."));
+    for (const x of rs) refs.append(el("div", "row", x.adult + (x.adultRole ? ", " + x.adultRole : "") + ". Saw: " + x.what + (x.confirmed ? " (confirmed the entry)" : "") + ". Add their email or phone on your own reference sheet, with their permission."));
+  }
+  function resumeText() {
+    const skills = [...document.querySelectorAll("#skills-list .row")].map((r) => "- " + r.innerText.replace(/\n/g, ": ")).join("\n");
+    return sortedExp().map(entryText).join("\n\n") + (skills ? "\n\nSKILLS WITH AN EXAMPLE\n" + skills : "");
+  }
+  $("copy-resume").onclick = async () => { const t = resumeText(); if (!(await copyText(t, $("resume-msg"), "Copied."))) { $("copy-fallback").textContent = t; $("copy-fallback").hidden = false; } };
+  $("copy-polish").onclick = async () => {
+    const p = PROMPTS.find((q) => q.id === "08-polish-resume-lines");
+    if (!p) return;
+    const t = fillPrompt(p).split("[PASTE YOUR EXPERIENCE LINES HERE]").join(resumeText() || "(no entries yet)");
+    if (!(await copyText(t, $("resume-msg"), "Copied. Paste it into a new free chat."))) { $("copy-fallback").textContent = t; $("copy-fallback").hidden = false; }
+  };
+  function mergeExp(list) {
+    if (!Array.isArray(list)) return 0;
+    let n = 0;
+    for (const x of list) {
+      if (!x || typeof x.what !== "string") continue;
+      const clean = { id: String(x.id || newId()), created: String(x.created || now()), updated: String(x.updated || now()) };
+      for (const k of EXP_FIELDS.slice(1)) clean[k] = String(x[k] || "").slice(0, k === "did" ? 3000 : 300);
+      for (const k of ["start", "end"]) if (!/^\d{4}-\d{2}$/.test(clean[k])) clean[k] = "";
+      for (const k of EXP_CHECKS) clean[k] = !!x[k];
+      const mine = state.exp.find((y) => y.id === clean.id);
+      if (!mine) { state.exp.push(clean); n++; }
+      else if (clean.updated > (mine.updated || "")) { Object.assign(mine, clean); n++; }
+    }
+    return n;
+  }
+
+  function render() {
+    renderNav();
+    if (state.tab === "log") renderExp();
+    if (state.tab === "resume") renderResume();
+    if (state.tab === "jobs") { renderToday(); renderJobs(); }
+    if (state.tab === "prompts") renderPrompts();
+    if (state.tab === "card" && $("card").value !== state.card) $("card").value = state.card;
+    if (state.tab === "backup") renderBackup();
+  }
+  setSave(); render();
+})();
+</script>
+</body>
+</html>

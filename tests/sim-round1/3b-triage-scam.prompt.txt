@@ -1,0 +1,42 @@
+Help me sort one message about a job and draft my reply. Use only the message and my card. Never guess a Pass.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+The message (paste all of it, including the sender's name, email address, or profile headline):
+From: Global HR Careers <careers.globalhr.team@gmail.example>
+Subject: Congratulations, you have been selected!
+
+Dear Candidate,
+
+Based on your Handshake profile you have been selected for a remote Data Entry Assistant position at 45 dollars per hour, 10 hours per week. No interview is needed. To begin, we will mail you a check to purchase your home office equipment from our approved vendor. Please reply today with your full name, home address and phone number, and message our hiring manager on Telegram to complete onboarding.
+
+Regards,
+Mrs. Grace Wilson
+Hiring Manager, Global HR Solutions
+
+1. Kind: a real person about a real role / job alert or newsletter / interview scheduling / rejection / offer / possible scam.
+2. Scam check. List every sign you see: money, equipment, or bank details before an offer; interview only by chat app; an offer with no interview; a free email address for a company; the sender's company, title, or the role changes between messages; odd spelling or mixed alphabets in names; pressure to act today; a link or file to open before anything is confirmed. If any: write "Do not click links or open files. Look the company up yourself." and stop there.
+3. If it is a role, score 5 checks as Pass, Fail, or Unknown, quoting the line used: role fit, level, pay, place and papers, process.
+4. Pick the reply: A (questions first) if no Fail and some Unknown. B (yes, let's talk) only if all 5 Pass. C (kind no thanks) if any Fail. None for alerts, newsletters, and scams.
+5. Write that reply in under 90 words, plain and friendly, signed with my first name:
+   - A asks only the Unknowns, at most 3, in this order: pay, place, process, which company (if a staffing agency did not say), level. For process, ask: "What are the interview steps? If there's a take-home, about how long is it, and what's the policy on AI tools?"
+   - Never state my pay number. If they asked for it, say I'd like to hear the range for the role first.
+   - Staffing agency: add "Please don't submit my profile anywhere until we've talked."
+   - B offers 3 times I am free as [TIME 1], [TIME 2], [TIME 3], or my scheduling link if my card has one.
+   - C names the first failing check kindly with no numbers, and says I'd be glad to hear about roles that fit my target roles.
+6. Tracker line: next step and a date.

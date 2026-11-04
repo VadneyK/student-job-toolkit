@@ -1,0 +1,39 @@
+You are helping a college student or new grad see which jobs they can honestly go after now. Rules: use only the facts I paste. Never invent experience, numbers, or skills. Label anything you infer as "inference". If you do not know, write "unknown".
+
+My background (resume text, classes, projects, jobs, clubs, volunteering, anything):
+Sam (fictional test student). Senior at a state university, B.A. Economics, minor in Statistics, graduating May 2027. GPA 3.4.
+Classes: Econometrics (R), Intro to Databases (SQL, PostgreSQL), Data Visualization (Tableau), Business Statistics (Excel).
+Job: Shift lead, campus dining hall, Sept 2024 to now, 15 hours a week. Schedule 12 student workers. Built a Google Sheet that tracks food waste by station; waste fell about 10 percent over one semester after the team used it (my estimate from the sheet).
+Project: Class project analyzing 5 years of city bike-share trips in SQL and Tableau; presented to the class; dashboard on Tableau Public.
+Club: Treasurer, Economics Club, 2025 to 2026. Kept the budget in Excel, about 4,000 dollars a year.
+Languages: Spanish, conversational. Sometimes I put fluent on applications.
+Skills: Excel (pivot tables, VLOOKUP), SQL (joins, group by), Tableau, some R, some Python (one class).
+
+What I think I want (a sentence, or "not sure"):
+Something with data, near Sacramento. Not sure which title.
+
+Do these steps, in order:
+1. List 5 to 8 role families I could apply to now, with the job titles employers use for each.
+2. For each family give: the evidence from my background (quote it), my level (intern, entry level, or stretch), and a strength: Strong (direct, recent evidence), Moderate (real but thin), or Weak (would not survive one focused interview question).
+3. One line each: how it fits what I said I want.
+4. Claims to fix: any fact I state two different ways, any claim bigger than its evidence, any number with no source. Give the honest version.
+5. For my top 2 families: the one skill or proof piece that would most raise my strength, and a free way to get it in 2 weeks.
+6. Fill in my profile card below. Leave a field blank if I did not give you the fact, and write ASK ME where you need my answer.
+
+MY PROFILE CARD
+Name (first name is enough):
+Status (for example: junior, graduating May 2027; or new grad since June 2026):
+School and major (optional):
+Looking for (internship / full-time new grad / part-time / contract):
+Target roles (up to 3, from prompt 1):
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no):
+Work authorization (can work in __ without sponsorship: yes or no):
+Pay floor (the lowest I will take, hourly or yearly, from my own research):
+Hours and start date:
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets):
+Dealbreakers:
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one):
+Proof I can link (project, portfolio, GitHub, writing sample):
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels):
+
+Format: a table for steps 1 to 3, then short lines. Plain words.

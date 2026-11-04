@@ -1,7 +1,7 @@
-# 5. Plan a proof-of-work prototype
+# 6. Plan a proof-of-work prototype
 
 When: a role you really want, where a resume alone will not stand out.
-Time: 5 minutes to plan; one weekend (8 hours or less) to build.
+Time: 5 minutes to plan; one evening (about 3 hours) or one weekend (8 hours or less) to build.
 
 A proof-of-work prototype is a small, real piece of the job, built before anyone asks, that shows how you think. It works because it answers the question every hiring manager has: "can this person do our work?" It is not a fake product and not free labor on their real systems. It is one small step of the work in the post, built from public information, with every decision written down.
 
@@ -23,7 +23,7 @@ My profile card:
 The job post (the text):
 [PASTE THE JOB POST HERE]
 
-Time I have: [for example, one weekend, about 8 hours]
+Time I have: [for example, one evening, about 3 hours]
 Tools I know or can use for free: [for example, Google Sheets, Python, Figma, a plain web page]
 
 1. Give 3 ideas. Each is one step of the work in this post, small enough for my time. For each: the line of the post it comes from, what I would build, and which public source its rules come from.
@@ -38,7 +38,9 @@ Tools I know or can use for free: [for example, Google Sheets, Python, Figma, a 
 ## What good looks like
 
 - Small and finished beats big and half done.
+- It goes next to a short tailored note in the application, not in place of one. Save it for the one or two roles you want most.
 - Every rule has a source. "R3: a score below 70 is flagged, from the post: 'flag low scores for review'".
 - The open questions are the best part: they show you know where your knowledge stops.
 - Credit any source and keep its license. If a source says no derivatives, link to it instead of copying it.
 - Put it on a free host (GitHub Pages, a shared Google Doc, a public Figma file) and put the link in the application note.
+- Show it to someone in your field before you send it (prompt 4). Ten minutes of their feedback usually finds the one thing to fix.

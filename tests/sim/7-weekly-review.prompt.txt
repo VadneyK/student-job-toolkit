@@ -1,0 +1,36 @@
+Run my weekly job-search review. Be honest and kind. Separate facts from inferences and label each. Do not cheer me up with things that are not true, and do not be harsh either.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+My week (paste your row from the job club sheet, or a list: what I applied to, who I asked for help, what came back):
+Job club sheet, my row, week 2:
+goal this week: 5 careful applications and 1 ask to a person
+careful applications sent: 2 (Lakeview Grocers Co-op Junior Data Analyst, Pine Street Logistics Data Analyst I), plus 3 quick applies I did not fit-check
+asks to a person: 0 (I meant to email the helper the coordinator matched me with, but I felt awkward)
+calls or interviews: Lakeview phone screen booked for next Wednesday
+what came back: Pine Street said no, and the person who wrote said they liked my bike-share dashboard; one quick apply was a Senior role and sent an automatic no
+last week's next-week goal: "fit-check everything before applying"
+
+1. What happened: applications, replies, interviews, rejections, offers, with counts.
+2. What came back: any reason a company gave, quoted.
+3. What I learned: each line labeled Fact or Inference. Look for patterns: which role families or levels got replies, which got none, where applications went that my own card says to skip.
+4. Claims check: anything I said differently in two places this week (dates, skills, levels).
+5. Next week, at most 3 changes. Keep applying: every role that passes the fit check gets a short note naming one real detail from the post. Add one proof-of-work step if I have a role I really want.
+6. One kind of person I could ask for advice this week (a field, not a name), and what to ask them. Prompt 4 will write the message.
+7. One line for my job club sheet: my goal for next week.

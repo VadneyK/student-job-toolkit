@@ -31,7 +31,7 @@ Format: a table for steps 1 to 3, then short lines. Plain words.
 
 ## What you should get back
 
-A table of role families with quoted evidence and a strength for each, a short "claims to fix" list, two gap fixes, and a filled card. Copy the card into the tracker's Profile tab and answer every ASK ME yourself.
+A table of role families with quoted evidence and a strength for each, a short "claims to fix" list, two gap fixes, and a filled card. Save the card in the kit page's Card tab (or a phone note) and answer every ASK ME yourself.
 
 ## If it goes wrong
 

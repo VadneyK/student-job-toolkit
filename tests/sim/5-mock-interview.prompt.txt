@@ -1,0 +1,39 @@
+Help me prepare for a practice interview with someone who works in my field. Use only my card and the post. Label anything you guess as "guess". Do not invent experience for me.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+The job post I am practicing for (or the kind of role, if there is no post):
+Junior Data Analyst, Lakeview Grocers Co-op (fictional company for testing)
+Location: Sacramento, CA. Hybrid, 2 days a week in our downtown office.
+Pay: 58,000 to 66,000 dollars a year, plus benefits.
+About the role: Help our operations team understand sales, waste and staffing across 14 stores. Build and maintain weekly dashboards, answer questions from store managers with SQL, and flag stores where waste is rising.
+You have: a bachelor's degree or equivalent experience; SQL; Excel; clear writing. 0 to 2 years of experience. Tableau or Power BI preferred.
+Start date: summer 2027 for new grads.
+Process: 30-minute phone screen, a 60-minute SQL exercise, then a panel interview.
+Must be authorized to work in the US.
+
+What my helper does (one line):
+data analyst at a regional hospital system
+
+1. A message to send them 2 days ahead, under 80 words: thanks, the post or role, my resume is attached, and the one area I most want practice on.
+2. The 8 questions this kind of interview most likely asks: 3 about my background, 3 about the work itself (technical or case questions for this field), 2 about how I work with people. Mark which ones the post points to, quoting the line.
+3. For each of my 3 strongest evidence lines on the card: a 4-sentence story I could tell (what was the situation, what I did, what happened, what I learned). Use only what is on the card; where a number is my estimate, keep the word "estimate".
+4. The 2 places in my card a real interviewer is most likely to push on, and an honest way to answer.
+5. Three questions to ask my helper at the end, for example: "What would make you hesitate to hire me?", "What does a strong answer to the work question sound like on your team?", "What should I learn first?"
+6. A thank-you message for after, under 60 words, with a [ONE THING I WILL CHANGE] slot.

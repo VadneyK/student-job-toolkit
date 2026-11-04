@@ -1,0 +1,48 @@
+Act as a careful, honest job-match checker. Use only my profile card and the job post below. Never mark Pass on a guess; use Unknown. For each check, quote the line of the post you used.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+The job post (the text, not a link):
+Junior Data Analyst, Lakeview Grocers Co-op (fictional company for testing)
+Location: Sacramento, CA. Hybrid, 2 days a week in our downtown office.
+Pay: 58,000 to 66,000 dollars a year, plus benefits.
+About the role: Help our operations team understand sales, waste and staffing across 14 stores. Build and maintain weekly dashboards, answer questions from store managers with SQL, and flag stores where waste is rising.
+You have: a bachelor's degree or equivalent experience; SQL; Excel; clear writing. 0 to 2 years of experience. Tableau or Power BI preferred.
+Start date: summer 2027 for new grads.
+Process: 30-minute phone screen, a 60-minute SQL exercise, then a panel interview.
+Must be authorized to work in the US.
+
+Step 0. Is it real? List any scam sign: money, equipment, or bank details asked before an offer; interview only by chat app; an offer with no interview; pay far above normal for little work; a free email address for a company; company facts that change or cannot be found. If you see one, write STOP with the reason and skip the rest.
+
+Step 1. Score 5 checks as Pass, Fail, or Unknown:
+1. Role fit: the work matches a target role on my card, with evidence in my card.
+2. Level: Pass for internship, new grad, entry level, or no years stated. "Preferred" years alone do not fail. Fail for a Senior or Staff title, or "required" years I do not have.
+3. Pay: Pass if the top of the range reaches my floor. Fail if the whole range is below it. Unknown if not stated.
+4. Place and papers: the location fits my card, and the work authorization or sponsorship fits mine.
+5. Process: the steps fit my process rules. Unknown if not stated.
+
+Step 2. Verdict, one of:
+APPLY: no Fail. List each Unknown as a question for my first conversation.
+SKIP: any Fail. Name the first one in one line.
+STOP: a scam sign from step 0.
+
+Step 3. If APPLY: write a 3-line note for the application that names one real detail from this post and one real thing from my card. No buzzwords. Nothing that is not on my card.
+
+Step 4. One honest sentence on my chances, and the one thing that would raise them most.
+
+Format: a table for step 1 (check, result, quoted line), then short lines.

@@ -1,0 +1,28 @@
+Help me write one short job-search message. Use only the facts I give. Under 90 words, plain and warm, signed with my first name. No buzzwords, no flattery, no claims that are not on my card.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+Mode:
+- NUMBER FIRST: they asked my pay number before giving a range. Write a reply that asks for the range for the level first, kindly.
+
+The thread so far (paste it):
+Me (Sam), Monday: Hi Priya, thanks for reaching out about the Operations Analyst role at Summit Outdoor Supply. This could be a fit. 1. What is the pay range for the role? 2. Is it remote, hybrid, or onsite, and where? Thanks, Sam
+
+Priya (in-house recruiter, Summit Outdoor Supply, a fictional company), Tuesday: Thanks Sam! It's hybrid, 3 days a week in our Roseville office. Before I share the range, what are your salary expectations?
+
+Then give me one line for my tracker: the next step and a date.
