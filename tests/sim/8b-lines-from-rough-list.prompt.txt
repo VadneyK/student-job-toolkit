@@ -1,0 +1,34 @@
+Turn my experience into resume lines for a student or new grad. Rules: keep every fact; add no facts, tools, numbers, or results I did not write. Keep "About" on any number I call an estimate. Do not turn a team or event result into something I did alone: if a number belongs to the team or the event, say so. Lead each entry with the role I held. Each line starts with a strong verb (past tense for finished work, present tense for ongoing) and stays under 20 words.
+
+My profile card:
+MY PROFILE CARD
+Name (first name is enough): Sam
+Status (for example: junior, graduating May 2027; or new grad since June 2026): senior, graduating May 2027
+School and major (optional): state university, Economics with a Statistics minor
+Looking for (internship / full-time new grad / part-time / contract): full-time new grad, start June 2027; paid contract work OK before then
+Target roles (up to 3, from prompt 1): data analyst, operations analyst, business analyst
+Where I can work (remote / hybrid within __ miles of __ / onsite in __ / willing to move: yes or no): remote, or hybrid or onsite within 30 miles of Sacramento; not willing to move
+Work authorization (can work in __ without sponsorship: yes or no): can work in the US without sponsorship: yes
+Pay floor (the lowest I will take, hourly or yearly, from my own research): 55,000 dollars a year, or 26 dollars an hour
+Hours and start date: full-time from June 2027; up to 15 hours a week before then
+My process rules (for example: a take-home over 4 hours, ask first; I follow every AI-tool rule a company sets): take-home over 4 hours, ask first; I follow every AI-tool rule a company sets
+Dealbreakers: commission-only pay; pay to apply or buy equipment
+Strongest evidence (3 lines, each a real thing I did, with a number if I have one): food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate); bike-share SQL and Tableau analysis of 5 years of trips; Economics Club treasurer, about 4,000 dollar budget in Excel
+Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashboard on Tableau Public
+Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
+Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
+
+My experience (lines from the kit page, or a rough list: what it was, my role, when, about how many hours, what I did, any real numbers, who saw it):
+- church youth group, I tutor 3 middle schoolers in algebra, Sundays after service, since Jan 2024, about 2 hours a week. The youth pastor set it up.
+- campus ministry fall retreat (Harvest Retreat), I was the registration desk lead, Sep to Oct 2025, maybe 20 hours total. Led 6 volunteers, made the sign-up sheet in Google Sheets, about 180 students came over 2 days (guess). The campus staff worker ran the retreat.
+- part-time barista, campus cafe, since Aug 2024, 12 hours a week. Train new hires.
+
+A job post I am aiming at (optional; write NONE if there is none):
+NONE
+
+1. For each entry: a header line (role, what it was, group, dates, hours), then 1 to 3 lines. If I gave lines already, show old and new.
+2. Skills with an example: list up to 6 skills, each with the one line that proves it.
+3. Neutral wording: for every line that names a church, ministry, or religious event, give a neutral version that is still accurate (for example "student organization" for a campus ministry, "nonprofit youth program" for a church youth group, "weekend retreat for 200 students" for a named retreat). Show both; I will choose.
+4. Mark any line you could not improve without inventing something, and give me one question to ask myself that would make it stronger (for example: "How many people came?").
+5. If I gave a job post: pick the 3 lines that matter most for it, quoting the line of the post each one answers.
+6. For each entry, the person I could ask to be a reference: the adult who led or saw the work (a role, not a name), and a 2-line message asking them to confirm the entry and be a reference, easy to say no to.

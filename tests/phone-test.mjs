@@ -55,7 +55,7 @@ try {
   check("Opens on the Experience tab", await evalJS(`!document.getElementById("v-log").hidden`));
   check("Experience: no sideways scroll at 375px", await noSideScroll()); await shot("1-experience-empty");
 
-  await evalJS(`(() => { const f = document.getElementById("exp-form"); f.elements.what.value = "Fall retreat registration desk"; f.elements.role.value = "Desk lead"; f.elements.group.value = "campus ministry"; f.elements.start.value = "2025-09"; f.elements.end.value = "2025-10"; f.elements.hours.value = "20"; f.elements.did.value = "Led a team of 6 volunteers at check-in\\nhelped with the cleanup\\nBuilt the sign-up sheet in Google Sheets"; f.elements.reach.value = "180 students checked in over 2 days"; f.elements.estimate.checked = true; f.elements.skills.value = "event planning, Google Sheets, leading volunteers"; f.elements.adult.value = "Alex"; f.elements.adultRole.value = "campus staff"; document.getElementById("save-exp").click(); return true; })()`);
+  await evalJS(`(() => { const f = document.getElementById("exp-form"); f.elements.what.value = "Fall retreat registration desk"; f.elements.role.value = "Desk lead"; f.elements.group.value = "campus ministry"; f.elements.groupNeutral.value = "student organization"; f.elements.start.value = "2025-09"; f.elements.end.value = "2025-10"; f.elements.hours.value = "20"; f.elements.did.value = "Led a team of 6 volunteers at check-in\\nhelped with the cleanup\\nBuilt the sign-up sheet in Google Sheets"; f.elements.reach.value = "180 students checked in over 2 days"; f.elements.estimate.checked = true; f.elements.skills.value = "event planning, Google Sheets, leading volunteers"; f.elements.adult.value = "Alex"; f.elements.adultRole.value = "campus staff"; document.getElementById("save-exp").click(); return true; })()`);
   await evalJS(`(() => { const f = document.getElementById("exp-form"); f.elements.what.value = "Math tutoring"; f.elements.role.value = "Tutor"; f.elements.group.value = "church youth group"; f.elements.start.value = "2024-01"; f.elements.hours.value = "2 a week"; f.elements.did.value = "Tutoring 3 middle schoolers in algebra"; f.elements.skills.value = "teaching, google sheets"; document.getElementById("save-exp").click(); return true; })()`);
   check("Experience: two entries saved", await evalJS(`document.querySelectorAll("#exp-list .row").length`) === 2);
   await shot("1b-experience");
@@ -69,7 +69,15 @@ try {
   check("Resume: unconfirmed adult gets a confirm message button", await evalJS(`!!document.querySelector("[id^=confirm-]")`));
   const skillsText = await evalJS(`document.getElementById("skills-list").innerText`);
   check("Resume: skills merged, counted, each with an example", /Google Sheets \(shown in 2 entries\)/.test(skillsText) && /Example: Built the sign-up sheet in Google Sheets \(Fall retreat registration desk\)/.test(skillsText));
+  check("Resume: a church or ministry name is flagged with a neutral option", /names a church or ministry/.test(res));
+  check("Resume: an entry with no role is not asked for one when it has one", !/Add your role/.test(res));
   check("Resume: no sideways scroll", await noSideScroll()); await shot("1c-resume-lines");
+  await evalJS(`document.getElementById("neutral").click(); true`);
+  const neutralRes = await evalJS(`document.getElementById("resume-list").innerText`);
+  check("Neutral names: the neutral group name replaces the church one", /Desk lead: Fall retreat registration desk, student organization, Sep 2025/.test(neutralRes) && !/registration desk, campus ministry/.test(neutralRes));
+  check("Neutral names: an entry with no neutral name is still flagged", /church youth group/.test(neutralRes) && /names a church or ministry/.test(neutralRes));
+  await shot("1d-resume-neutral");
+  await evalJS(`document.getElementById("neutral").click(); true`);
   await tab("card");
   check("Card: starts with the blank card", /MY PROFILE CARD/.test(await evalJS(`document.getElementById("card").value`)));
   await evalJS(`const c=document.getElementById("card"); c.value = c.value.replace("Name (first name is enough):", "Name (first name is enough): Sam").replace("Target roles (up to 3, from prompt 1):", "Target roles (up to 3, from prompt 1): data analyst, operations analyst"); c.dispatchEvent(new Event("input")); true`);

@@ -27,13 +27,15 @@ No kit page? Every prompt is also a plain file in `prompts/`. Keep your card in 
 | 5 | Get ready for a mock interview | When a helper agrees to practice with you. |
 | 6 | Plan a proof-of-work prototype | For the one or two roles you want most. |
 | 7 | Weekly review | Once a week, before your job club meets. |
-| 8 | Polish your resume lines | Optional, after the kit page writes them. |
+| 8 | Turn what you did into resume lines | From a rough list, or to tighten the kit page's lines. |
 
 ## Your service is experience
 
 Leading a small group, running a retreat registration desk, tutoring, setting up for Sunday, managing a sign-up sheet: these are real experience, and most students leave them off. The Experience tab is where you record them while you still remember the details: your role, the dates, the hours, what you did, what you made, and who it reached.
 
-Describe each thing as what it was. Name the group honestly ("campus ministry", or its real name). Let the actions and numbers do the work: "Led a team of 6 volunteers at check-in" says more than "passionate servant leader". If a number is a guess, tick "estimate" and the line will say "About".
+Describe each thing as what it was, and put the role you held first: employers weigh leadership ("Desk lead", "Small group leader") far above "volunteer". Let the actions and numbers do the work: "Led a team of 6 volunteers at check-in" says more than "passionate servant leader". If a number is a guess, tick "estimate" and the line will say "About".
+
+One thing worth knowing: in US field tests, resumes with a religious signal got about a quarter fewer replies. The kit page flags any entry that names a church or ministry, and you can add an accurate neutral name ("student organization" for a campus ministry, "nonprofit youth program" for a church youth group) and switch between the two. Which one you send is your choice; for a faith-based employer, the church's name may help. Either way, never describe a group as something it was not.
 
 If an adult saw your work (a staff member, a pastor, a ministry leader), ask them to confirm the entry. The Resume lines tab writes the message for you. If they confirm, ask whether they would be a reference. A reference who watched you work is worth more than one who only knows your name. Ask before you list anyone.
 

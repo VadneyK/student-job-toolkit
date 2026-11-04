@@ -27,6 +27,7 @@ const cases = {
   "5-mock-interview": fill(prompt("05-mock-interview.md"), { [C]: card, "[PASTE THE JOB POST HERE]": fx("post-fit.txt"), "[WHAT THEY DO]": "data analyst at a regional hospital system" }),
   "6-proof-of-work": fill(prompt("06-proof-of-work.md"), { [C]: card, "[PASTE THE JOB POST HERE]": fx("post-fit.txt"), "[for example, one evening, about 3 hours]": "one evening, about 3 hours", "[for example, Google Sheets, Python, Figma, a plain web page]": "Google Sheets, SQL (PostgreSQL), Tableau Public" }),
   "7-weekly-review": fill(prompt("07-weekly-review.md"), { [C]: card, "[PASTE YOUR WEEK HERE]": fx("club-row.txt") }),
+  "8b-lines-from-rough-list": fill(prompt("08-polish-resume-lines.md"), { [C]: card, "[PASTE YOUR EXPERIENCE LINES HERE]": fx("experience-rough.txt"), "[PASTE THE JOB POST HERE, OR WRITE NONE]": "NONE" }),
   "8-polish-lines": fill(prompt("08-polish-resume-lines.md"), { [C]: card, "[PASTE YOUR EXPERIENCE LINES HERE]": fx("experience-lines.txt"), "[PASTE THE JOB POST HERE, OR WRITE NONE]": fx("post-fit.txt") }),
 };
 mkdirSync(join(root, "tests", "sim"), { recursive: true });

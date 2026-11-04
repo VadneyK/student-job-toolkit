@@ -1,45 +1,80 @@
-## 1. Rewritten lines
+Here are your resume lines, Sam. I kept every fact and added nothing. Your event number stays labeled as the event's, not yours alone.
 
-I left the headings (titles, dates, hours) unchanged.
+## 1. Entries (role first, old and new)
 
-**Tutor: Math tutoring, church youth group, Jan 2024 to now (2 hours a week)**
+### Tutor | Math tutoring | Church youth group | Jan 2024 to present | 2 hours a week
+
 - Old: Tutoring 3 middle schoolers in algebra.
-- New: Tutor 3 middle schoolers in algebra, 2 hours a week, through a church youth group.
+- New: Tutor 3 middle schoolers in algebra at a church youth group, 2 hours a week.
 
-**Desk lead: Fall retreat registration desk, campus ministry, Sep 2025 to Oct 2025 (about 20 hours)**
-- Old: Led a team of 6 volunteers at check-in.
-- New: Led a team of 6 volunteers at check-in for the campus ministry fall retreat.
+(Present tense because it is ongoing.)
 
-- Old: Helped with the cleanup.
-- New: Helped with the cleanup. (Unchanged, see section 2.)
+### Desk lead | Fall retreat registration desk | Campus ministry | Sep 2025 to Oct 2025 | about 20 hours
 
-- Old: Built the sign-up sheet in Google Sheets.
-- New: Built the fall retreat sign-up sheet in Google Sheets.
+| Old | New |
+|---|---|
+| Led a team of 6 volunteers at check-in. | Led a team of 6 volunteers at check-in for the fall retreat registration desk. |
+| Built the sign-up sheet in Google Sheets. | Built the sign-up sheet in Google Sheets; assisted with cleanup. |
+| Helped with the cleanup. | (Merged into the line above so no fact is lost. See section 4.) |
+| About 180 students checked in over 2 days. | Led check-in at a retreat where about 180 students checked in over 2 days (event total, not mine alone). |
 
-- Old: About 180 students checked in over 2 days.
-- New: Staffed the registration desk where about 180 students checked in over 2 days.
+That gives you 3 lines for this entry. The "About 180" is the event's number. It is not something you did alone, so the line says so.
 
-Notes: "Tutor" is present tense because the entry ends in "now." "About" is kept on the 180 count because it is an estimate. Every new line is under 20 words.
+## 2. Skills with an example
 
-## 2. Lines I could not improve without inventing something
+- Google Sheets: Built the sign-up sheet in Google Sheets; assisted with cleanup. (Fall retreat registration desk)
+- Team leadership: Led a team of 6 volunteers at check-in for the fall retreat registration desk.
+- Teaching: Tutor 3 middle schoolers in algebra at a church youth group, 2 hours a week. (Math tutoring)
+- Event check-in: Led check-in at a retreat where about 180 students checked in over 2 days (event total).
 
-- "Helped with the cleanup." I do not know what was cleaned up, how long it took, or what your part was, so any stronger verb would be a guess. Question: What exactly did you do (for example, reset the room, count supplies, pack up the desk), and about how many people or how much time was involved? If the answer is small, consider cutting this line.
-- "Tutor 3 middle schoolers in algebra..." is only slightly better. Question: What changed for the students (a test, a grade, a topic they finally got), if anything? Only use it if it is true.
-- "Staffed the registration desk where about 180 students checked in..." Question: Is 180 the total for the whole retreat or the number your own team handled? That changes how you can say it.
+Notes:
+- You listed "Event planning" with the check-in line. Leading a check-in team is event operations, not planning, so I swapped in "Team leadership" and "Event check-in", which the line proves. Keep "Event planning" only if you also helped plan the retreat.
+- SQL, Excel and Tableau are on your profile card, but none of these two entries shows them, so I have no line for them here.
 
-## 3. The 3 lines that matter most for the Lakeview post
+## 3. Neutral wording (show both; you choose)
 
-You gave me only two entries, so these are the best matches I can find. Honestly, they are partial matches. Your profile card items (food-waste sheet, bike-share SQL and Tableau, treasurer budget in Excel) answer this post better than these two entries do.
+| Part | Original | Neutral |
+|---|---|---|
+| Tutor header | Church youth group | Nonprofit youth program |
+| Tutor line | ...at a church youth group, 2 hours a week. | Tutor 3 middle schoolers in algebra at a nonprofit youth program, 2 hours a week. |
+| Desk lead header | Fall retreat registration desk, campus ministry | Fall student retreat registration desk, student organization |
+| Desk lead line 1 | ...at check-in for the fall retreat registration desk. | Led a team of 6 volunteers at check-in for a fall student retreat. |
+| Desk lead line 3 | Led check-in at a retreat where about 180 students checked in over 2 days (event total, not mine alone). | Same line. It names no church or ministry, so no change is needed. |
 
-1. "Built the fall retreat sign-up sheet in Google Sheets." Answers: "You have: ... Excel" and "Build and maintain weekly dashboards." It shows spreadsheet skill, but Google Sheets is not Excel, and a sign-up sheet is not a dashboard. Do not claim more than that.
-2. "Staffed the registration desk where about 180 students checked in over 2 days." Answers: "Help our operations team understand sales, waste and staffing across 14 stores." It shows you have worked inside an operations-type task with real numbers, but it is a small event, not 14 stores.
-3. "Tutor 3 middle schoolers in algebra, 2 hours a week, through a church youth group." Answers: "answer questions from store managers with SQL" and "clear writing." It shows you explain things to non-experts, but it has no SQL in it.
+The Google Sheets and cleanup line names nothing religious, so it stays as is.
 
-The "Led a team of 6 volunteers" line is also useful for the staffing part of the post if you have room.
+## 4. Lines I could not improve without inventing something
 
-## 4. Lines that sound bigger than the facts behind them
+- "Helped with the cleanup" (merged into the Google Sheets line as "assisted with cleanup"). I cannot say what was cleaned up or how it mattered. Question: What exactly did you clean up or put away, and who worked with you?
+- "Tutor 3 middle schoolers in algebra." I cannot add results. Question: What changed for your students, for example their grades or how they felt about algebra?
+- "Built the sign-up sheet in Google Sheets." I cannot say what it did. Question: What did the sheet track, and how many people used it?
+- The 180 check-in line. Question: How many of the 180 did your desk handle?
 
-- "Led a team of 6 volunteers at check-in for the campus ministry fall retreat." It is accurate, but "led a team" can sound like a long-term role. Honest version: you led 6 volunteers at the check-in desk for a 2-day retreat (about 20 hours total). Keep it factual and do not add words like "managed."
-- "Staffed the registration desk where about 180 students checked in over 2 days." The 180 is the event's total, not something you personally processed. Keep "where" so it reads as the desk's count. Do not change it to "Checked in about 180 students" unless that is what you did yourself.
-- Skills list: "Google Sheets (shown in 2 entries)." I can see it in only one entry here (the sign-up sheet). If it is not in another entry, change it to "shown in 1 entry."
-- The skills examples should match the rewritten wording above so your resume says the same thing in both places.
+## 5. The 3 lines that matter most for the Lakeview Grocers Junior Data Analyst post
+
+Honest note first: the strongest evidence for this post is on your profile card, not in these two entries (the food-waste Google Sheet, the bike-share SQL and Tableau analysis, the Economics Club budget in Excel). Consider adding those as entries. From the lines you gave me:
+
+1. Built the sign-up sheet in Google Sheets; assisted with cleanup.
+   Answers: "You have: a bachelor's degree or equivalent experience; SQL; Excel; clear writing." It shows spreadsheet skill. It is Google Sheets, not Excel, so say so if asked.
+2. Led a team of 6 volunteers at check-in for the fall retreat registration desk.
+   Answers: "Help our operations team understand sales, waste and staffing across 14 stores." It is the closest match to staffing and operations work. The match is loose.
+3. Tutor 3 middle schoolers in algebra at a church youth group, 2 hours a week.
+   Answers: "answer questions from store managers with SQL" and "clear writing". It shows you can explain numbers to people who are not experts. The match is loose.
+
+## 6. References and a message for each
+
+### Tutor (Math tutoring)
+
+Reference to ask: the adult who runs the youth group (for example the youth pastor or youth leader).
+
+Message:
+> Hi [title/name], I'm graduating in May and applying for jobs. Could I list you as a reference for my algebra tutoring with the youth group?
+> If you can, would you also confirm this line is accurate: "Tutor 3 middle schoolers in algebra, 2 hours a week"? No problem at all if you'd rather not.
+
+### Desk lead (Fall retreat registration desk)
+
+Reference to ask: the campus ministry staff member or adult leader who oversaw the retreat registration.
+
+Message:
+> Hi [title/name], I'm graduating in May and applying for jobs. Could I list you as a reference for my work leading the fall retreat registration desk?
+> Could you also confirm these lines are accurate: led 6 volunteers at check-in, built the sign-up sheet, about 180 students over 2 days? No pressure if you can't.

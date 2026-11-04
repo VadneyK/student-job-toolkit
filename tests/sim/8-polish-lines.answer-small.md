@@ -1,48 +1,67 @@
-# Polished resume lines
+# Resume lines for Sam
 
-## 1. Rewrites
+## 1. Entries
 
-**Tutor (Math tutoring, church youth group)**
-- Old: Tutoring 3 middle schoolers in algebra.
-- New: Tutor 3 middle schoolers in algebra, 2 hours a week, for math tutoring in my church youth group.
+### Entry 1: Tutor
 
-**Desk lead (Fall retreat registration desk, campus ministry)**
-- Old: Led a team of 6 volunteers at check-in.
-- New: Led a team of 6 volunteers at check-in for the fall retreat registration desk, campus ministry.
-- Old: Helped with the cleanup.
-- New: Helped with the cleanup at the fall retreat registration desk, campus ministry.
-- Old: Built the sign-up sheet in Google Sheets.
-- New: Built the sign-up sheet in Google Sheets for the fall retreat registration desk, campus ministry.
-- Old: About 180 students checked in over 2 days.
-- New: Staffed the fall retreat registration desk, which checked in about 180 students over 2 days.
+**Tutor, Math tutoring, church youth group, Jan 2024 to present, 2 hours a week**
+(neutral version in step 3)
 
-**Strongest evidence**
-- Old: food-waste Google Sheet, waste fell about 10 percent in a semester (my estimate).
-- New: Built a food-waste Google Sheet; waste fell about 10 percent in a semester (my estimate).
-- Old: bike-share SQL and Tableau analysis of 5 years of trips.
-- New: Analyzed 5 years of bike-share trips with SQL and Tableau.
-- Old: Economics Club treasurer, about 4,000 dollar budget in Excel.
-- New: Kept the Economics Club budget, about 4,000 dollars, in Excel as treasurer.
+- Old: "Tutoring 3 middle schoolers in algebra."
+- New: "Tutor 3 middle schoolers in algebra, ongoing since January 2024."
+- Could not improve without inventing a result. Question: "Did any of the 3 students' grades or test scores improve, and by how much?"
 
-The skill examples on your card should use the new wording: Google Sheets uses the sign-up sheet line, Event planning uses the check-in line, and Teaching uses the tutoring line.
+### Entry 2: Desk lead
 
-## 2. Lines I could not improve without inventing
+**Desk lead, Fall retreat registration desk, campus ministry, Sep 2025 to Oct 2025, about 20 hours**
+(neutral version in step 3)
 
-1. Tutoring line. Question: What changed for the 3 students after my tutoring?
-2. Helped with the cleanup. "Helped" is a weak verb, but a stronger one would claim more than you wrote. Question: What exactly did I do during the cleanup?
-3. Built the sign-up sheet. A number would need facts you did not give. Question: How many students signed up through the sheet?
-4. Built a food-waste Google Sheet. You did not say you built it, so confirm the verb. If you did not build it, tell me what you did and I will change it. Question: How did I measure the 10 percent drop?
-5. Analyzed 5 years of bike-share trips. Question: What did the trip data show?
+- Old: "Led a team of 6 volunteers at check-in."
+- Old: "Helped with the cleanup."
+- Old: "Built the sign-up sheet in Google Sheets."
+- Old: "About 180 students checked in over 2 days."
+- New: "Led a team of 6 volunteers at check-in and helped with the cleanup."
+- New: "Built the sign-up sheet in Google Sheets."
+- New: "Led the team that checked in about 180 students over 2 days (team total, not my own count)."
+- Could not improve without inventing my own share of the count. Question: "How many of the 180 students did my own desk check in?"
 
-## 3. Three lines that matter most for the Lakeview Grocers job
+## 2. Skills with an example
 
-1. Food-waste line. It answers "flag stores where waste is rising."
-2. Bike-share line. It answers "answer questions from store managers with SQL" and "Tableau or Power BI preferred."
-3. Economics budget line. It answers "SQL; Excel; clear writing."
+- **Google Sheets:** "Built the sign-up sheet in Google Sheets." (Your card says this shows in 2 entries. In these entries it shows in 1.)
+- **Event planning:** "Led a team of 6 volunteers at check-in and helped with the cleanup."
+- **Teaching:** "Tutor 3 middle schoolers in algebra, ongoing since January 2024."
 
-## 4. Lines that sound bigger than the facts
+SQL and Excel are on your card, but no entry here proves them, so they are not listed. Add your bike-share SQL and Tableau analysis, and your Economics Club budget in Excel, as entries to prove them.
 
-- Food-waste line: "waste fell" reads like a measured result, but your facts say it is your estimate. The honest version keeps "my estimate" in the line, as in section 1.
-- Desk line "About 180 students checked in": reads as if you did the check-ins yourself. The honest version credits the desk with the count, as in section 1.
-- Economics line: "Managed" would sound bigger than a treasurer's budget kept in Excel, so the line uses "Kept."
-- The other lines match the facts.
+## 3. Neutral wording
+
+- Tutor header: "church youth group" (church version) or "nonprofit youth program" (neutral version).
+- Desk lead header: "campus ministry" (church version) or "student organization" (neutral version).
+- None of the new lines in step 1 name a church, ministry, or religious event.
+
+## 4. Lines I could not improve without inventing something
+
+- Tutor line: no result is given. Question: "Did any of the 3 students' grades or test scores improve, and by how much?"
+- Desk lead line 3: the 180 is the team's number and I have no figure for your own part. Question: "How many of the 180 students did my own desk check in?"
+
+## 5. Lines for the job post
+
+Lakeview Grocers Co-op, Junior Data Analyst. Three lines that matter most, with the post line each one answers:
+
+1. "Built the sign-up sheet in Google Sheets." Answers: "Build and maintain weekly dashboards." This is a spreadsheet, not a dashboard, so it is a weak match.
+2. "Led a team of 6 volunteers at check-in and helped with the cleanup." Answers: "Help our operations team understand sales, waste and staffing across 14 stores." This shows teamwork, not operations work.
+3. "Tutor 3 middle schoolers in algebra, ongoing since January 2024." Answers: "answer questions from store managers with SQL." Explaining algebra is answering questions, but there is no SQL.
+
+None of these lines shows SQL, Excel, or Tableau, which the post asks for. A project entry such as the bike-share analysis would fix that.
+
+## 6. References
+
+**Entry 1 (Tutor):** the youth group leader or staff member who oversees the tutoring (a role).
+
+> Hi, could you confirm that I have tutored 3 middle schoolers in algebra since January 2024, about 2 hours a week?
+> If you are willing, I would like to list you as a reference, and it is completely fine to say no.
+
+**Entry 2 (Desk lead):** the campus ministry staff adviser who ran the fall retreat (a role).
+
+> Hi, could you confirm that I was the registration desk lead for the fall retreat in September and October 2025, about 20 hours in total, leading 6 volunteers and building the sign-up sheet?
+> If you are willing, I would like to list you as a reference, and it is completely fine to say no.

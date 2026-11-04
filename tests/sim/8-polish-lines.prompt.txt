@@ -1,4 +1,4 @@
-Tighten these resume lines for a student or new grad. Rules: keep every fact; add no facts, tools, numbers, or results I did not write. Keep the word "About" wherever a number is an estimate. Each line starts with a strong past-tense verb (present tense if the entry ends in "now") and stays under 20 words. Name the group as I named it; do not hide or rename it. Do not turn a team or event result into something I did alone: if a number belongs to the team or the event, say so.
+Turn my experience into resume lines for a student or new grad. Rules: keep every fact; add no facts, tools, numbers, or results I did not write. Keep "About" on any number I call an estimate. Do not turn a team or event result into something I did alone: if a number belongs to the team or the event, say so. Lead each entry with the role I held. Each line starts with a strong verb (past tense for finished work, present tense for ongoing) and stays under 20 words.
 
 My profile card:
 MY PROFILE CARD
@@ -18,7 +18,7 @@ Proof I can link (project, portfolio, GitHub, writing sample): bike-share dashbo
 Groups I belong to (optional: church, campus ministry, club, alumni group): a church and its campus ministry
 Facts I keep the same everywhere (graduation date, GPA if I share it, language levels, skill levels): May 2027; GPA 3.4; Spanish conversational; SQL and Excel intermediate, Python beginner
 
-My lines (from my experience log):
+My experience (lines from the kit page, or a rough list: what it was, my role, when, about how many hours, what I did, any real numbers, who saw it):
 Tutor: Math tutoring, church youth group, Jan 2024 to now (2 hours a week)
 - Tutoring 3 middle schoolers in algebra.
 
@@ -43,7 +43,9 @@ Start date: summer 2027 for new grads.
 Process: 30-minute phone screen, a 60-minute SQL exercise, then a panel interview.
 Must be authorized to work in the US.
 
-1. Rewrite each line. Show the old line and the new line.
-2. Mark any line you could not improve without inventing something, and give me one question to ask myself that would make it stronger (for example: "How many people came?").
-3. If I gave a job post: pick the 3 lines that matter most for it, quoting the line of the post each one answers.
-4. List any line that sounds bigger than the facts behind it, and the honest version.
+1. For each entry: a header line (role, what it was, group, dates, hours), then 1 to 3 lines. If I gave lines already, show old and new.
+2. Skills with an example: list up to 6 skills, each with the one line that proves it.
+3. Neutral wording: for every line that names a church, ministry, or religious event, give a neutral version that is still accurate (for example "student organization" for a campus ministry, "nonprofit youth program" for a church youth group, "weekend retreat for 200 students" for a named retreat). Show both; I will choose.
+4. Mark any line you could not improve without inventing something, and give me one question to ask myself that would make it stronger (for example: "How many people came?").
+5. If I gave a job post: pick the 3 lines that matter most for it, quoting the line of the post each one answers.
+6. For each entry, the person I could ask to be a reference: the adult who led or saw the work (a role, not a name), and a 2-line message asking them to confirm the entry and be a reference, easy to say no to.
