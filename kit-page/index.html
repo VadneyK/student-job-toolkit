@@ -36,7 +36,6 @@ nav button[aria-pressed="true"] { background: var(--accent); border-color: var(-
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
 .list { display: grid; gap: 10px; }
 .row { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 4px; min-width: 0; }
-.row.due { border-color: var(--due); background: var(--due-soft); }
 .row .top { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
 .row .t { font-weight: 600; overflow-wrap: anywhere; min-width: 0; }
 .row .m { color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
@@ -49,10 +48,6 @@ button.b:hover { border-color: var(--accent); }
 button.primary { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 a { color: var(--accent); }
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
-.stat { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
-.stat b { display: block; font: 600 22px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
-.stat span { font-size: 13px; color: var(--muted); }
 form.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 form.grid .full { grid-column: 1 / -1; }
 @media (max-width: 520px) { form.grid { grid-template-columns: 1fr; } }
@@ -67,9 +62,6 @@ textarea.card { min-height: 360px; font: 14px/1.5 var(--mono); }
 .ok { color: var(--accent); font-size: 14px; }
 details summary { cursor: pointer; color: var(--muted); font-size: 14px; }
 pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin: 8px 0 0; }
-.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.filters button { font: 600 13px var(--body); border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
-.filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 [hidden] { display: none !important; }
 </style>
 </head>
@@ -128,34 +120,6 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
     <div class="list" id="ref-list"></div>
   </section>
 
-  <section id="v-jobs" hidden>
-    <h2>This week</h2>
-    <div class="stats" id="stats"></div>
-    <h2>Due today</h2>
-    <div class="list" id="today-list"></div>
-    <h2 id="form-h">Add a job</h2>
-    <form class="grid panel" id="form" autocomplete="off">
-      <input type="hidden" name="id">
-      <label>Company<input name="company" required></label>
-      <label>Role<input name="role" required></label>
-      <label class="full">Link to the post<input name="link" type="url" placeholder="https://"></label>
-      <label>Found through<select name="source"></select></label>
-      <label>Stage<select name="stage"></select></label>
-      <label>Fit check verdict<select name="verdict"></select></label>
-      <label>Next step date<input name="due" type="date"></label>
-      <label class="full">Next step<input name="next" placeholder="For example: send questions-first reply"></label>
-      <label class="full">Notes (unknowns, who you talked to, what you learned)<textarea name="notes" rows="3"></textarea></label>
-      <label class="check full"><input type="checkbox" name="share"> A friend could use this lead (shared without your notes)</label>
-      <div class="acts full">
-        <button class="b primary" type="submit" id="save-job">Save job</button>
-        <button class="b" type="button" id="cancel-edit" hidden>Cancel</button>
-      </div>
-    </form>
-    <h2>All jobs</h2>
-    <div class="filters" id="filters" role="group" aria-label="Filter by stage"></div>
-    <div class="list" id="job-list"></div>
-  </section>
-
   <section id="v-prompts" hidden>
     <h2>Prompts for any free AI chat</h2>
     <p class="note">Tap Copy, open a new chat (Claude, ChatGPT, or Gemini, free plan is fine), paste, then fill the [PASTE ... HERE] parts. Your profile card goes in for you.</p>
@@ -173,11 +137,6 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
   </section>
 
   <section id="v-backup" hidden>
-    <h2>Weekly summary</h2>
-    <p class="note">For prompt 7, the weekly review, or your row in the job club sheet. Company names only, no notes.</p>
-    <div class="acts"><button class="b primary" type="button" id="copy-week">Copy weekly summary</button></div>
-    <pre id="week-text" hidden></pre>
-
     <h2>Backup</h2>
     <p class="note" id="last-backup"></p>
     <div class="acts">
@@ -185,21 +144,14 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
       <button class="b" type="button" id="copy-backup">Copy backup as text</button>
     </div>
 
-    <h2>Restore or add a friend's leads</h2>
-    <p class="note">Choose a backup or leads file, or paste its text. Jobs are merged: the newer copy of each one wins, and nothing is deleted.</p>
+    <h2>Restore a backup</h2>
+    <p class="note">Choose a backup file, or paste its text. Entries are merged: the newer copy of each one wins, and nothing is deleted.</p>
     <div class="acts">
       <label class="b" style="display:inline-flex;align-items:center;cursor:pointer">Choose file<input type="file" id="import-file" accept=".json,application/json,text/plain" hidden></label>
     </div>
-    <textarea id="import-text" rows="4" placeholder="Or paste backup or leads text here" aria-label="Paste backup text"></textarea>
+    <textarea id="import-text" rows="4" placeholder="Or paste backup text here" aria-label="Paste backup text"></textarea>
     <div class="acts"><button class="b" type="button" id="import-paste">Add from pasted text</button></div>
     <p class="ok" id="import-msg" aria-live="polite"></p>
-
-    <h2>Share leads with friends</h2>
-    <p class="note">Only jobs you ticked "A friend could use this lead": company, role, link, and stage. Never your notes.</p>
-    <div class="acts">
-      <button class="b" type="button" id="export-leads">Download leads file</button>
-      <button class="b" type="button" id="copy-leads">Copy leads as text</button>
-    </div>
 
     <h2>Erase</h2>
     <div class="acts"><button class="b" type="button" id="erase">Erase everything on this device</button></div>
@@ -213,10 +165,7 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
 (function () {
   "use strict";
   const KEY = "student-job-toolkit-v1";
-  const STAGES = ["Saved", "Applied", "Talking", "Interview", "Offer", "Closed"];
-  const SOURCES = ["Job board", "School career site", "LinkedIn", "Career fair", "Referral", "Recruiter reached out", "Company site", "Friend's lead", "Other"];
-  const VERDICTS = ["Not checked", "Apply", "Ask first", "Skip", "Stop: scam signs"];
-  const TABS = [["log", "Experience"], ["resume", "Resume lines"], ["card", "Card"], ["prompts", "Prompts"], ["jobs", "Jobs"], ["backup", "Backup"]];
+  const TABS = [["log", "Experience"], ["resume", "Resume lines"], ["card", "Card"], ["prompts", "Prompts"], ["backup", "Backup"]];
   const PROMPTS = JSON.parse(document.getElementById("prompt-data").textContent || "[]");
   const CARD_TEMPLATE = (PROMPTS.find((p) => p.id === "00-profile-card") || {}).text || "MY PROFILE CARD\n";
   const $ = (id) => document.getElementById(id);
@@ -224,10 +173,11 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
   // Storage: test that it really persists, and say so plainly when it does not.
   let canStore = false;
   try { localStorage.setItem(KEY + "-test", "1"); canStore = localStorage.getItem(KEY + "-test") === "1"; localStorage.removeItem(KEY + "-test"); } catch (e) { canStore = false; }
-  let state = { v: 1, card: "", jobs: [], exp: [], lastExport: "", tab: "log", filter: "Open" };
+  let state = { v: 1, card: "", exp: [], lastExport: "", tab: "log" };
   try { const raw = canStore && localStorage.getItem(KEY); if (raw) state = Object.assign(state, JSON.parse(raw)); } catch (e) {}
   if (!state.card) state.card = CARD_TEMPLATE;
   if (!Array.isArray(state.exp)) state.exp = [];
+  delete state.jobs; delete state.filter;
   if (!TABS.some(([k]) => k === state.tab)) state.tab = "log";
   function save() {
     if (!canStore) { setSave(); return; }
@@ -242,13 +192,10 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
   }
 
   const today = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
-  const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
   const now = () => new Date().toISOString();
   const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function btn(label, fn, cls, id) { const b = el("button", "b" + (cls ? " " + cls : ""), label); b.type = "button"; if (id) b.id = id; b.onclick = fn; return b; }
-  function safeLink(u) { return typeof u === "string" && /^https?:\/\//i.test(u) ? u : ""; }
-  function log(j, what) { j.history = j.history || []; j.history.push({ at: now(), what: what }); j.updated = now(); }
 
   // Navigation
   function renderNav() {
@@ -260,105 +207,6 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
       nav.append(b);
     }
     for (const [k] of TABS) $("v-" + k).hidden = state.tab !== k;
-  }
-
-  // A job row, with the Job Hub's three taps: Done, Snooze, Not for me.
-  function rowEl(j, showActs) {
-    const isDue = j.stage !== "Closed" && j.due && j.due <= today();
-    const r = el("div", "row" + (isDue && showActs ? " due" : ""));
-    const top = el("div", "top");
-    top.append(el("div", "t", j.company + " : " + j.role), el("span", "pill" + (j.stage === "Closed" ? " idle" : ""), j.stage));
-    r.append(top);
-    const meta = [j.source, j.verdict && j.verdict !== "Not checked" ? "match: " + j.verdict : "", j.due ? (isDue ? "due " : "next ") + j.due : ""].filter(Boolean).join("  ·  ");
-    if (meta) r.append(el("div", "m", meta));
-    if (j.next) r.append(el("div", "n", "Next: " + j.next));
-    const link = safeLink(j.link);
-    if (link) { const a = el("a", null, "Open the post"); a.href = link; a.target = "_blank"; a.rel = "noopener noreferrer"; const n = el("div", "n"); n.append(a); r.append(n); }
-    const acts = el("div", "acts");
-    if (showActs && j.stage !== "Closed") {
-      acts.append(
-        btn("Done", () => doneStep(j), "primary", "done-" + j.id),
-        btn("Snooze 3 days", () => { j.due = addDays(today(), 3); log(j, "snoozed to " + j.due); save(); render(); }, null, "snooze-" + j.id),
-        btn("Not for me", () => { j.stage = "Closed"; j.due = ""; j.next = ""; log(j, "closed: not for me"); save(); render(); }, null, "close-" + j.id)
-      );
-    }
-    acts.append(btn("Edit", () => editJob(j), null, "edit-" + j.id));
-    r.append(acts);
-    return r;
-  }
-  function doneStep(j) {
-    log(j, "done: " + (j.next || "step"));
-    j.next = ""; j.due = "";
-    save(); editJob(j, "Step done. What is the next step for " + j.company + "?");
-  }
-
-  function renderToday() {
-    const open = state.jobs.filter((j) => j.stage !== "Closed");
-    const due = open.filter((j) => j.due && j.due <= today()).sort((a, b) => a.due.localeCompare(b.due));
-    const list = $("today-list"); list.textContent = "";
-    if (due.length) due.forEach((j) => list.append(rowEl(j, true)));
-    else {
-      const e = el("div", "empty");
-      e.append(el("p", null, state.jobs.length ? "Nothing due today." : "No jobs yet. Run the fit check (prompt 2) on a post, then add it below."));
-      e.append(el("p", null, "Pick one thing that moves the search forward: one careful application, one reply, or one hour on a proof-of-work project."));
-      list.append(e);
-    }
-    const weekAgo = new Date(Date.now() - 7 * 864e5).toISOString();
-    const appliedThisWeek = state.jobs.filter((j) => (j.history || []).some((h) => h.at >= weekAgo && /stage: Applied/.test(h.what))).length;
-    const items = [
-      [appliedThisWeek, "applications this week"],
-      [open.filter((j) => j.stage === "Talking").length, "talking"],
-      [open.filter((j) => j.stage === "Interview").length, "interviews"],
-      [open.filter((j) => j.stage === "Offer").length, "offers"],
-    ];
-    const st = $("stats"); st.textContent = "";
-    for (const [n, label] of items) { const s = el("div", "stat"); s.append(el("b", null, String(n)), el("span", null, label)); st.append(s); }
-  }
-
-  // Jobs form and list
-  function fillSelect(name, opts) { const s = $("form").elements[name]; s.textContent = ""; for (const o of opts) s.append(new Option(o, o)); }
-  fillSelect("source", SOURCES); fillSelect("stage", STAGES); fillSelect("verdict", VERDICTS);
-  function resetForm() {
-    const f = $("form"); f.reset(); f.elements.id.value = "";
-    $("form-h").textContent = "Add a job"; $("cancel-edit").hidden = true;
-  }
-  function editJob(j, heading) {
-    const f = $("form");
-    for (const k of ["id", "company", "role", "link", "source", "stage", "verdict", "due", "next", "notes"]) f.elements[k].value = j[k] || "";
-    f.elements.share.checked = !!j.share;
-    $("form-h").textContent = heading || "Edit " + j.company;
-    $("cancel-edit").hidden = false;
-    state.tab = "jobs"; save(); render();
-    f.scrollIntoView({ block: "start" });
-    f.elements[heading ? "next" : "company"].focus();
-  }
-  $("cancel-edit").onclick = () => { resetForm(); };
-  $("form").onsubmit = (ev) => {
-    ev.preventDefault();
-    const f = ev.target;
-    const v = (k) => f.elements[k].value.trim();
-    let j = state.jobs.find((x) => x.id === v("id"));
-    const isNew = !j;
-    if (isNew) { j = { id: newId(), created: now(), history: [] }; state.jobs.unshift(j); }
-    const oldStage = isNew ? "" : j.stage;
-    Object.assign(j, { company: v("company"), role: v("role"), link: v("link"), source: v("source"), stage: v("stage"), verdict: v("verdict"), due: v("due"), next: v("next"), notes: v("notes"), share: f.elements.share.checked });
-    log(j, isNew ? "added" : "edited");
-    if (j.stage !== oldStage) log(j, "stage: " + j.stage);
-    save(); resetForm(); render();
-  };
-  function renderJobs() {
-    const box = $("filters"); box.textContent = "";
-    for (const k of ["Open", ...STAGES, "All"]) {
-      const n = k === "All" ? state.jobs.length : k === "Open" ? state.jobs.filter((j) => j.stage !== "Closed").length : state.jobs.filter((j) => j.stage === k).length;
-      const b = el("button", null, k + " " + n); b.type = "button"; b.id = "filter-" + k;
-      b.setAttribute("aria-pressed", String(state.filter === k));
-      b.onclick = () => { state.filter = k; save(); renderJobs(); };
-      box.append(b);
-    }
-    const shown = state.jobs.filter((j) => state.filter === "All" || (state.filter === "Open" ? j.stage !== "Closed" : j.stage === state.filter));
-    const list = $("job-list"); list.textContent = "";
-    if (shown.length) shown.forEach((j) => list.append(rowEl(j, true)));
-    else list.append(el("div", "empty", state.jobs.length ? "Nothing in this group." : "Add your first job above. Run the fit check (prompt 2) on it first, and record the verdict."));
   }
 
   // Prompts, with the profile card pasted in
@@ -400,60 +248,26 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
   $("card").addEventListener("input", (ev) => { state.card = ev.target.value; save(); $("card-saved").textContent = canStore ? "Saved" : ""; });
   $("card-reset").onclick = () => { if (confirm("Replace your card with a blank one?")) { state.card = CARD_TEMPLATE; save(); render(); } };
 
-  // Backup, leads and the weekly summary
+  // Backup and restore
   function download(name, text) {
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([text], { type: "application/json" }));
     a.download = name; document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   }
-  function backupText() { return JSON.stringify({ kind: "student-job-toolkit-backup", v: 1, card: state.card, jobs: state.jobs, exp: state.exp }, null, 1); }
-  function leadsText() {
-    const leads = state.jobs.filter((j) => j.share).map((j) => ({ id: j.id, company: j.company, role: j.role, link: safeLink(j.link), stage: j.stage === "Closed" ? "Closed" : "Saved", updated: j.updated }));
-    return JSON.stringify({ kind: "student-job-toolkit-leads", v: 1, jobs: leads }, null, 1);
-  }
+  function backupText() { return JSON.stringify({ kind: "student-job-toolkit-backup", v: 1, card: state.card, exp: state.exp }, null, 1); }
   function markExported() { state.lastExport = now(); save(); renderBackup(); }
-  $("export").onclick = () => { download("job-tracker-backup-" + today() + ".json", backupText()); markExported(); };
+  $("export").onclick = () => { download("student-job-kit-backup-" + today() + ".json", backupText()); markExported(); };
   $("copy-backup").onclick = async () => { const t = backupText(); $("copy-fallback").textContent = t; if (await copyText(t, $("import-msg"), "Backup copied. Paste it into a note or email to yourself.")) markExported(); else $("copy-fallback").hidden = false; };
-  $("export-leads").onclick = () => download("job-leads-" + today() + ".json", leadsText());
-  $("copy-leads").onclick = async () => { const t = leadsText(); $("copy-fallback").textContent = t; if (!(await copyText(t, $("import-msg"), "Leads copied. Paste them to your friends."))) $("copy-fallback").hidden = false; };
-  function weekText() {
-    const weekAgo = new Date(Date.now() - 7 * 864e5).toISOString();
-    const lines = ["MY JOB SEARCH WEEK, ending " + today()];
-    const byStage = STAGES.map((s) => s + " " + state.jobs.filter((j) => j.stage === s).length).join(", ");
-    lines.push("Totals by stage: " + byStage);
-    lines.push("What happened this week:");
-    let any = false;
-    for (const j of state.jobs) {
-      const hs = (j.history || []).filter((h) => h.at >= weekAgo && h.what !== "edited");
-      if (!hs.length) continue;
-      any = true;
-      lines.push("- " + j.company + ", " + j.role + " (now " + j.stage + (j.verdict && j.verdict !== "Not checked" ? ", match " + j.verdict : "") + "): " + hs.map((h) => h.what).join("; "));
-    }
-    if (!any) lines.push("- nothing logged");
-    const next = state.jobs.filter((j) => j.stage !== "Closed" && j.next).map((j) => "- " + j.company + ": " + j.next + (j.due ? " (" + j.due + ")" : ""));
-    if (next.length) lines.push("Open next steps:", ...next);
-    return lines.join("\n");
-  }
-  $("copy-week").onclick = async () => { const t = weekText(); const pre = $("week-text"); pre.textContent = t; pre.hidden = false; await copyText(t, $("import-msg"), "Weekly summary copied."); };
   function mergeIn(text) {
     let data;
-    try { data = JSON.parse(text); } catch (e) { return "That is not a backup or leads file."; }
-    const jobs = Array.isArray(data && data.jobs) ? data.jobs : null;
-    if (!jobs) return "That file has no jobs in it.";
-    const expAdded = data.kind === "student-job-toolkit-backup" ? mergeExp(data.exp) : 0;
-    const isLeads = data.kind === "student-job-toolkit-leads";
-    let added = 0, updated = 0;
-    for (const x of jobs) {
-      if (!x || typeof x.company !== "string" || typeof x.role !== "string") continue;
-      const clean = { id: String(x.id || newId()), company: x.company.slice(0, 200), role: x.role.slice(0, 200), link: safeLink(x.link), source: isLeads ? "Friend's lead" : String(x.source || "Other"), stage: STAGES.includes(x.stage) ? x.stage : "Saved", verdict: VERDICTS.includes(x.verdict) ? x.verdict : "Not checked", due: /^\d{4}-\d{2}-\d{2}$/.test(x.due || "") ? x.due : "", next: String(x.next || "").slice(0, 500), notes: isLeads ? "" : String(x.notes || "").slice(0, 5000), share: !isLeads && !!x.share, created: String(x.created || now()), updated: String(x.updated || now()), history: Array.isArray(x.history) && !isLeads ? x.history.filter((h) => h && typeof h.what === "string").map((h) => ({ at: String(h.at), what: h.what.slice(0, 300) })) : [] };
-      const mine = state.jobs.find((j) => j.id === clean.id);
-      if (!mine) { if (isLeads) clean.history.push({ at: now(), what: "lead from a friend" }); state.jobs.push(clean); added++; }
-      else if (!isLeads && clean.updated > (mine.updated || "")) { Object.assign(mine, clean); updated++; }
-    }
-    if (!isLeads && typeof data.card === "string" && data.card.trim() && (state.card === CARD_TEMPLATE || !state.card.trim())) state.card = data.card;
+    try { data = JSON.parse(text); } catch (e) { return "That is not a backup file."; }
+    if (!data || data.kind !== "student-job-toolkit-backup") return "That is not a backup file from this kit.";
+    const n = mergeExp(data.exp);
+    let card = false;
+    if (typeof data.card === "string" && data.card.trim() && (state.card === CARD_TEMPLATE || !state.card.trim())) { state.card = data.card; card = true; }
     save(); render();
-    return "Added " + added + ", updated " + updated + (expAdded ? ", and " + expAdded + " log entries" : "") + ". Nothing was deleted.";
+    return "Restored " + n + " log entr" + (n === 1 ? "y" : "ies") + (card ? " and your card" : "") + ". Nothing was deleted.";
   }
   $("import-file").onchange = (ev) => {
     const file = ev.target.files && ev.target.files[0]; if (!file) return;
@@ -463,8 +277,8 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
   };
   $("import-paste").onclick = () => { $("import-msg").textContent = mergeIn($("import-text").value); $("import-text").value = ""; };
   $("erase").onclick = () => {
-    if (!confirm("Erase your log, every job and your card from this device? Download a backup first if you want to keep them.")) return;
-    state = { v: 1, card: CARD_TEMPLATE, jobs: [], exp: [], lastExport: "", tab: "log", filter: "Open" };
+    if (!confirm("Erase your log and your card from this device? Download a backup first if you want to keep them.")) return;
+    state = { v: 1, card: CARD_TEMPLATE, exp: [], lastExport: "", tab: "log" };
     save(); render();
   };
   function renderBackup() {
@@ -615,7 +429,6 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
     renderNav();
     if (state.tab === "log") renderExp();
     if (state.tab === "resume") renderResume();
-    if (state.tab === "jobs") { renderToday(); renderJobs(); }
     if (state.tab === "prompts") renderPrompts();
     if (state.tab === "card" && $("card").value !== state.card) $("card").value = state.card;
     if (state.tab === "backup") renderBackup();

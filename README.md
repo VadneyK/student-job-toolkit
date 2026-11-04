@@ -21,7 +21,7 @@ Trackers, auto-apply bots, resume tailors, and interview apps already exist, and
 | Path | What it is |
 |---|---|
 | [GUIDE.md](GUIDE.md) | The plain-words guide and the 10-minute start |
-| [kit-page/index.html](kit-page/index.html) | One offline page: the experience log, resume lines, your profile card, every prompt with a Copy button that pastes your card in, a simple job list, and backup. Everything stays on the device |
+| [kit-page/index.html](kit-page/index.html) | One offline page: the experience log, resume lines, your profile card, every prompt with a Copy button that pastes your card in, and backup. Everything stays on the device. It is not a job tracker |
 | [prompts/](prompts/) | 9 files: the profile card and 8 prompts, each with what good output looks like and what to say if it goes wrong |
 | [community/](community/) | The helper form, the student request form, the coordinator guide, the job club guide and sheet, and a blank "calling and work" page for community leaders |
 | [tests/](tests/) | The phone-width test of the kit page, and the free-plan simulation: fixtures, filled prompts, and every answer |
@@ -33,9 +33,9 @@ Tested on 2026-11-04 by walking the kit as a student would, with a fictional stu
 
 ### The kit page at phone width
 
-`tests/phone-test.mjs` opens `kit-page/index.html` from a file (no server, no network) in headless Chromium at 375 by 812 (an iPhone-size screen) and walks every tab: logs two experience entries, reads the resume lines, fills the card, copies a prompt, adds and snoozes a job, reloads, exports a backup and a leads file, imports both into an empty page, and tries a bad file and an unsafe link. Then it checks every tab at 320 pixels wide.
+`tests/phone-test.mjs` opens `kit-page/index.html` from a file (no server, no network) in headless Chromium at 375 by 812 (an iPhone-size screen) and walks every tab: logs two experience entries, reads the resume lines and the skill examples, fills the card, copies a prompt, reloads, exports a backup, restores it twice into an empty page (a new phone), and tries a bad file and a malformed entry. Then it checks every tab at 320 pixels wide.
 
-**Result: 35 of 35 checks pass.** No sideways scroll on any tab at 375 or 320 pixels. Data survives a reload. The leads file carries no notes, no log entries, and no adult names. Screenshots are in `tests/screenshots/`.
+**Result: 28 of 28 checks pass.** No sideways scroll on any tab at 375 or 320 pixels. Data survives a reload, and a backup restores on a new device without duplicates. Screenshots are in `tests/screenshots/`.
 
 Not tested: a real iPhone or Android browser, and Safari's handling of saved data for pages opened from the Files app. That is why the page tells students to download a backup each week.
 
@@ -60,7 +60,7 @@ No free account was signed into. Instead, each prompt was filled exactly as a st
 
 **What the test changed.** Round 1 (in `tests/sim-round1/`) used an earlier recruiter-triage prompt that said "if you see any scam sign, stop". Both models then called an ordinary staffing-agency email a scam, because it said "let me know today". The scam check now gives three answers (likely scam, check first, looks real), and both models get the agency email right.
 
-**One slip, fixed after the test.** In case 8 the small model rewrote "About 180 students checked in" as "Processed about 180 student check-ins", which credits the student with the whole desk's count. The mid model asked instead whether 180 was the team's number. Prompt 8 now says not to turn a team or event result into the student's own, and its "If it goes wrong" list has the reply to use. That added sentence has not been re-run.
+**One slip, fixed and re-run.** In case 8 the small model first rewrote "About 180 students checked in" as "Processed about 180 student check-ins", which credits the student with the whole desk's count (`tests/sim/8-polish-lines.answer-small-before-fix.md`). The mid model asked instead whether 180 was the team's number. Prompt 8 now says not to turn a team or event result into the student's own. Re-run on the small model: "Staffed the fall retreat registration desk, which checked in about 180 students over 2 days", and it flagged the old line as reading bigger than the facts.
 
 **Limits.** A stand-in is not the real free plan. Real free plans may switch to a smaller model after a few messages, cut long answers short (type `continue`), or refuse to open links (paste text). Each prompt plus its pasted inputs is under 900 words, well within any free plan's limit.
 

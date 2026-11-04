@@ -1,6 +1,6 @@
 // Phone-width test of kit-page/index.html in headless Chrome, driven over the DevTools protocol.
 // Opens the page from file:// at 375x812 (an iPhone-size screen), walks every tab as a student would,
-// checks there is no sideways scroll, that saved data survives a reload, that the leads file carries no notes,
+// checks there is no sideways scroll, that saved data survives a reload, that a backup restores on a new device,
 // and saves a screenshot of each tab to tests/screenshots/.
 // Usage: node --experimental-websocket tests/phone-test.mjs   (Node 20; Node 22 needs no flag)
 import { spawn } from "node:child_process";
@@ -81,53 +81,32 @@ try {
   check("Prompts: Copy pastes the card into the match test", /Name \(first name is enough\): Sam/.test(filled) && !/\[PASTE YOUR PROFILE CARD HERE\]/.test(filled) && /\[PASTE THE JOB POST HERE\]/.test(filled));
   check("Prompts: no sideways scroll", await noSideScroll()); await shot("3-prompts");
 
-  await tab("jobs");
-  await evalJS(`(() => { const f = document.getElementById("form"); f.elements.company.value = "Example Co"; f.elements.role.value = "Junior Data Analyst"; f.elements.link.value = "https://example.com/jobs/1"; f.elements.stage.value = "Applied"; f.elements.verdict.value = "Apply"; f.elements.next.value = "Follow up if no reply"; f.elements.due.value = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10); f.elements.notes.value = "PRIVATE NOTE: talked to a friend there"; f.elements.share.checked = true; document.getElementById("save-job").click(); return true; })()`);
-  await evalJS(`(() => { const f = document.getElementById("form"); f.elements.company.value = "Sample Labs"; f.elements.role.value = "Operations Intern"; f.elements.stage.value = "Saved"; f.elements.verdict.value = "Ask first"; f.elements.next.value = "Send questions-first reply"; document.getElementById("save-job").click(); return true; })()`);
-  check("Jobs: two jobs saved", await evalJS(`document.querySelectorAll("#job-list .row").length`) === 2);
-  check("Jobs: no sideways scroll", await noSideScroll()); await shot("4-jobs");
-
-  await tab("jobs");
-  check("Today: the due job shows with Done, Snooze, Not for me", await evalJS(`document.querySelectorAll("#today-list .row.due").length === 1 && !!document.querySelector("#today-list [id^=done-]") && !!document.querySelector("#today-list [id^=snooze-]") && !!document.querySelector("#today-list [id^=close-]")`));
-  check("Jobs: counts 1 application this week", /^1$/.test(await evalJS(`document.querySelector("#stats .stat b").textContent`)));
-  await shot("5-jobs-due");
-  await evalJS(`document.querySelector("#today-list [id^=snooze-]").click(); true`);
-  check("Today: Snooze moves it off today", await evalJS(`document.querySelectorAll("#today-list .row.due").length`) === 0);
-
   await load();
-  check("Reload: log, jobs and card survive", await evalJS(`(() => { const s = JSON.parse(localStorage.getItem("student-job-toolkit-v1")); return s.jobs.length === 2 && s.exp.length === 2 && /Sam/.test(s.card); })()`));
+  check("Reload: log and card survive", await evalJS(`(() => { const s = JSON.parse(localStorage.getItem("student-job-toolkit-v1")); return s.exp.length === 2 && /Sam/.test(s.card); })()`));
+  check("No job tracker: there is no Jobs tab", await evalJS(`!document.getElementById("tab-jobs") && !document.getElementById("v-jobs")`));
 
   await tab("backup");
   await evalJS(`window.__blobs = []; const o = URL.createObjectURL; URL.createObjectURL = (b) => { window.__blobs.push(b); return o(b); }; true`);
-  await evalJS(`document.getElementById("export-leads").click(); true`);
-  const leads = await evalJS(`window.__blobs[0].text()`);
-  check("Leads file: has the shared job and no notes", /Example Co/.test(leads) && !/PRIVATE NOTE/.test(leads) && !/Sample Labs/.test(leads) && !/Sam/.test(leads));
   await evalJS(`document.getElementById("export").click(); true`);
-  const backup = await evalJS(`window.__blobs[1].text()`);
-  check("Backup file: has both jobs, notes, the log and the card", /Sample Labs/.test(backup) && /PRIVATE NOTE/.test(backup) && /Sam/.test(backup) && /Fall retreat/.test(backup));
-  check("Leads file: carries no log entries or adult names", !/Fall retreat|Alex/.test(leads));
+  const backup = await evalJS(`window.__blobs[0].text()`);
+  check("Backup file: has the log, the adult's name and the card", /Fall retreat/.test(backup) && /Alex/.test(backup) && /Sam/.test(backup));
   check("Backup: last-backup line updates", /today/.test(await evalJS(`document.getElementById("last-backup").textContent`)));
-  await evalJS(`document.getElementById("copy-week").click(); true`); await wait(200);
-  const week = await evalJS(`document.getElementById("week-text").textContent`);
-  check("Weekly summary: lists this week without notes", /Example Co/.test(week) && /stage: Applied/.test(week) && !/PRIVATE NOTE/.test(week));
   check("Backup: no sideways scroll", await noSideScroll()); await shot("6-backup");
 
-  // A friend imports the leads file into an empty kit page: it lands as "Friend's lead" with no notes.
+  // Restore into an empty page (a new phone): merges by id and deletes nothing.
   await evalJS(`localStorage.clear(); true`); await load(); await tab("backup");
-  await evalJS(`document.getElementById("import-text").value = ${JSON.stringify(leads)}; document.getElementById("import-paste").click(); true`);
-  const st = await evalJS(`JSON.parse(localStorage.getItem("student-job-toolkit-v1"))`);
-  check("Friend import: one lead added as Friend's lead", st.jobs.length === 1 && st.jobs[0].source === "Friend's lead" && st.jobs[0].notes === "");
-  // Restoring the full backup merges by id and deletes nothing.
   await evalJS(`document.getElementById("import-text").value = ${JSON.stringify(backup)}; document.getElementById("import-paste").click(); true`);
   const st2 = await evalJS(`JSON.parse(localStorage.getItem("student-job-toolkit-v1"))`);
-  check("Restore: backup merges to 2 jobs and 2 log entries, card restored", st2.jobs.length === 2 && st2.exp.length === 2 && /Sam/.test(st2.card));
+  check("Restore: 2 log entries and the card come back", st2.exp.length === 2 && /Sam/.test(st2.card));
+  await evalJS(`document.getElementById("import-text").value = ${JSON.stringify(backup)}; document.getElementById("import-paste").click(); true`);
+  check("Restore twice: no duplicates", await evalJS(`JSON.parse(localStorage.getItem("student-job-toolkit-v1")).exp.length`) === 2);
   check("Restore: a bad file is refused politely", /not a backup/.test(await evalJS(`document.getElementById("import-text").value = "hello"; document.getElementById("import-paste").click(); document.getElementById("import-msg").textContent`)));
-  // A javascript: link in an imported file is dropped.
-  await evalJS(`document.getElementById("import-text").value = JSON.stringify({kind:"student-job-toolkit-leads",jobs:[{id:"x1",company:"Bad",role:"Link",link:"javascript:alert(1)"}]}); document.getElementById("import-paste").click(); true`);
-  check("Import: unsafe links are dropped", await evalJS(`JSON.parse(localStorage.getItem("student-job-toolkit-v1")).jobs.find(j => j.id === "x1").link`) === "");
+  // Bad dates and oversized fields in an imported file are cleaned.
+  await evalJS(`document.getElementById("import-text").value = JSON.stringify({kind:"student-job-toolkit-backup",exp:[{id:"x1",what:"Bad",start:"<img>",did:"x".repeat(9000)}]}); document.getElementById("import-paste").click(); true`);
+  check("Import: bad dates dropped, long text cut", await evalJS(`(() => { const x = JSON.parse(localStorage.getItem("student-job-toolkit-v1")).exp.find(e => e.id === "x1"); return x.start === "" && x.did.length === 3000; })()`));
 
   await send("Emulation.setDeviceMetricsOverride", { width: 320, height: 640, deviceScaleFactor: 2, mobile: true });
-  let all320 = true; for (const k of ["log", "resume", "card", "prompts", "jobs", "backup"]) { await tab(k); all320 = all320 && (await noSideScroll()); }
+  let all320 = true; for (const k of ["log", "resume", "card", "prompts", "backup"]) { await tab(k); all320 = all320 && (await noSideScroll()); }
   check("All tabs: no sideways scroll at 320px (small phones)", all320);
 } catch (e) {
   check("test run finished", false, e.message);
