@@ -10,7 +10,7 @@ Church and community service counts. Leading a small group, running an event boo
 ## Paste this into a new chat
 
 ```text
-Tighten these resume lines for a student or new grad. Rules: keep every fact; add no facts, tools, numbers, or results I did not write. Keep the word "About" wherever a number is an estimate. Each line starts with a strong past-tense verb (present tense if the entry ends in "now") and stays under 20 words. Name the group as I named it; do not hide or rename it.
+Tighten these resume lines for a student or new grad. Rules: keep every fact; add no facts, tools, numbers, or results I did not write. Keep the word "About" wherever a number is an estimate. Each line starts with a strong past-tense verb (present tense if the entry ends in "now") and stays under 20 words. Name the group as I named it; do not hide or rename it. Do not turn a team or event result into something I did alone: if a number belongs to the team or the event, say so.
 
 My profile card:
 [PASTE YOUR PROFILE CARD HERE]
@@ -31,3 +31,4 @@ A job post I am aiming at (optional; write NONE if there is none):
 
 - It adds a tool or number you did not write: reply "Remove anything I did not write myself."
 - It drops "About" from an estimate: reply "Keep About on estimated numbers."
+- It credits you with the whole team's numbers ("Processed 180 check-ins" when your team did): reply "That was the team. Say so."

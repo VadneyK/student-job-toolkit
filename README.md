@@ -55,10 +55,12 @@ No free account was signed into. Instead, each prompt was filled exactly as a st
 | 4b. Referral ask for a role the fit check skipped | Refuses the referral ask, writes a call ask instead | Pass | Pass |
 | 5. Mock interview prep | Questions tied to the post, stories from the card only, keeps "estimate" | Pass | Pass |
 | 6. Proof of work, one evening | Rules tied to quoted post lines, open questions, a plan in steps of an hour or less | Pass | Pass |
-| 7. Weekly review from a job club row | Flags the 3 quick applies that skipped the fit check and the missed ask | ROUND3-7-SMALL | ROUND3-7-MID |
-| 8. Polish resume lines | Keeps every fact and "About", adds nothing, picks lines for the post | ROUND3-8-SMALL | ROUND3-8-MID |
+| 7. Weekly review from a job club row | Flags the 3 quick applies that skipped the fit check and the missed ask | Pass | Pass |
+| 8. Polish resume lines | Keeps every fact and "About", adds nothing, picks lines for the post | Pass, one slip (below) | Pass |
 
 **What the test changed.** Round 1 (in `tests/sim-round1/`) used an earlier recruiter-triage prompt that said "if you see any scam sign, stop". Both models then called an ordinary staffing-agency email a scam, because it said "let me know today". The scam check now gives three answers (likely scam, check first, looks real), and both models get the agency email right.
+
+**One slip, fixed after the test.** In case 8 the small model rewrote "About 180 students checked in" as "Processed about 180 student check-ins", which credits the student with the whole desk's count. The mid model asked instead whether 180 was the team's number. Prompt 8 now says not to turn a team or event result into the student's own, and its "If it goes wrong" list has the reply to use. That added sentence has not been re-run.
 
 **Limits.** A stand-in is not the real free plan. Real free plans may switch to a smaller model after a few messages, cut long answers short (type `continue`), or refuse to open links (paste text). Each prompt plus its pasted inputs is under 900 words, well within any free plan's limit.
 
