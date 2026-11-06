@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Job Kit</title>
+<meta name="description" content="A free job kit for college students and new grads: turn what you have done into honest resume lines, check each job post for fit and scams, and ask someone in your field for help.">
+<style>
+:root {
+  --bg: #f5f6f4; --panel: #ffffff; --fg: #1b2420; --muted: #56635c; --line: #d9dfdb; --accent: #2c6e49;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --panel: #1a221e; --fg: #e5ece8; --muted: #a3b0a8; --line: #2b3631; --accent: #7cc79b; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #121815; --panel: #1a221e; --fg: #e5ece8; --muted: #a3b0a8; --line: #2b3631; --accent: #7cc79b; color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.55 var(--body); }
+main { max-width: 680px; margin: 0 auto; padding: 40px 16px 64px; }
+h1 { font-size: 32px; line-height: 1.15; margin: 0 0 12px; }
+h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 32px 0 10px; }
+p { margin: 0 0 12px; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.go { display: inline-block; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600; border-radius: 10px; padding: 12px 18px; margin: 8px 0 4px; }
+ol, ul { padding-left: 22px; margin: 0 0 12px; }
+li { margin: 4px 0; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+.note { color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Student Job Kit</h1>
+  <p>A free kit for college students and new grads looking for an internship or a first job. It works with a free Claude, ChatGPT, or Gemini account. No sign-up, no app, no cost.</p>
+  <a class="go" href="kit-page/">Open the kit</a>
+  <p class="note">Everything you type stays on your phone or laptop. Nothing is sent anywhere.</p>
+
+  <h2>Start in 10 minutes</h2>
+  <div class="card">
+    <ol>
+      <li><strong>Log 2 things you did</strong> this year: a role in your campus group, an event you helped run, tutoring, a part-time job. The kit turns them into honest resume lines, with no AI.</li>
+      <li><strong>Make your profile card.</strong> On the Prompts tab, copy prompt 1 into a free AI chat with your resume text.</li>
+      <li><strong>Check one job post</strong> with prompt 2: five checks for the traps that catch students, then apply, skip, or stop.</li>
+    </ol>
+  </div>
+
+  <h2>What else is in it</h2>
+  <ul>
+    <li>A scam check for job messages you did not ask for, before you click anything.</li>
+    <li>A short, easy-to-decline message asking someone in your field for 20 minutes.</li>
+    <li>Mock interview prep, a one-evening proof-of-work project, and a weekly review.</li>
+    <li>For churches, campus ministries and alumni groups: a way to connect students with working members in their field, and a job club guide.</li>
+  </ul>
+
+  <h2>Read more</h2>
+  <p><a href="https://github.com/VadneyK/student-job-toolkit/blob/main/GUIDE.md">The guide, in plain words</a> · <a href="https://github.com/VadneyK/student-job-toolkit/tree/main/prompts">All prompts as plain text</a> · <a href="https://github.com/VadneyK/student-job-toolkit/tree/main/community">For communities</a></p>
+  <p class="note">Free to use and share (MIT license).</p>
+</main>
+</body>
+</html>

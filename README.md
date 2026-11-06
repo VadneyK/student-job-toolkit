@@ -4,6 +4,8 @@ A free job-search kit for college students and new grads, and for the working ad
 
 It works with a free Claude, ChatGPT, or Gemini account by pasting text. No API key, no paid plan, no app, no sign-up, and no personal data in this repo. **Start here: [GUIDE.md](GUIDE.md)** (10 minutes).
 
+**Live:** https://vadneyk.github.io/student-job-toolkit/ (the kit page is at `/kit-page/`).
+
 ## Why another job kit
 
 Trackers, auto-apply bots, resume tailors, and interview apps already exist, and most have free plans. This kit does not compete with them. It covers what they leave out:
@@ -68,10 +70,16 @@ No free account was signed into. Instead, each prompt was filled exactly as a st
 ## For maintainers
 
 ```bash
-npm test
+make check
 ```
 
-Runs the build, the text check, and the phone-width test (needs Node 20 or later and any Chrome or Chromium; set `CHROME=/path/to/chrome` if it is not found). To change a prompt, edit its file in `prompts/` and run `npm run build`; the tracker picks it up.
+Builds the prompts into the kit page, runs the text check and the phone test, and runs layout-check at nine widths (320 to 2560) on the landing page and the kit page. Needs Node 20 or later and any Chrome or Chromium (set `CHROME=/path/to/chrome` if it is not found).
+
+```bash
+make ship
+```
+
+The only way to release: `make check`, then push `main`, wait for the GitHub Pages build, smoke-test the live site, and revert the release if the smoke test fails. To change a prompt, edit its file in `prompts/`, run `node tools/build.mjs`, commit, then `make ship`.
 
 ## License
 
