@@ -4,57 +4,133 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Student Job Kit</title>
-<meta name="description" content="A free job kit for college students and new grads: turn what you have done into honest resume lines, check each job post for fit and scams, and ask someone in your field for help.">
+<meta name="description" content="A free job kit for college students and new grads. Turn what you have done into resume lines, check job posts, and ask someone in your field for help.">
 <style>
 :root {
-  --bg: #f5f6f4; --panel: #ffffff; --fg: #1b2420; --muted: #56635c; --line: #d9dfdb; --accent: #2c6e49;
+  --bg: #f4f6f3; --panel: #ffffff; --fg: #17201b; --muted: #57645d; --line: #dbe2dd;
+  --accent: #2c6e49; --accent-soft: #e1efe6; --warm: #b4571f; --warm-soft: #fbece2;
   --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color-scheme: light;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #121815; --panel: #1a221e; --fg: #e5ece8; --muted: #a3b0a8; --line: #2b3631; --accent: #7cc79b; color-scheme: dark } }
-:root[data-theme="dark"] { --bg: #121815; --panel: #1a221e; --fg: #e5ece8; --muted: #a3b0a8; --line: #2b3631; --accent: #7cc79b; color-scheme: dark }
+  --bg: #111714; --panel: #19211d; --fg: #e6ede9; --muted: #a3b0a8; --line: #2a3530;
+  --accent: #7cc79b; --accent-soft: #1c3327; --warm: #f0a06b; --warm-soft: #3a2619; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #111714; --panel: #19211d; --fg: #e6ede9; --muted: #a3b0a8; --line: #2a3530;
+  --accent: #7cc79b; --accent-soft: #1c3327; --warm: #f0a06b; --warm-soft: #3a2619; color-scheme: dark }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.55 var(--body); }
-main { max-width: 680px; margin: 0 auto; padding: 40px 16px 64px; }
-h1 { font-size: 32px; line-height: 1.15; margin: 0 0 12px; }
-h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 32px 0 10px; }
-p { margin: 0 0 12px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.5 var(--body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
 a { color: var(--accent); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.go { display: inline-block; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600; border-radius: 10px; padding: 12px 18px; margin: 8px 0 4px; }
-ol, ul { padding-left: 22px; margin: 0 0 12px; }
-li { margin: 4px 0; }
-.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
-.note { color: var(--muted); font-size: 15px; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+svg { display: block; }
+
+.hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 56px 0 40px; }
+.tag { display: inline-block; font-size: 14px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 6px 12px; }
+h1 { font-size: clamp(40px, 7vw, 64px); line-height: 1.02; letter-spacing: -0.02em; margin: 16px 0 14px; text-wrap: balance; }
+.lede { font-size: 20px; color: var(--muted); margin: 0 0 24px; max-width: 30ch; }
+.go { display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 18px; border-radius: 14px; padding: 15px 22px; }
+.go svg { width: 20px; height: 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding: 0; list-style: none; }
+.chips li { font-size: 14px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; background: var(--panel); }
+
+.phone { justify-self: center; width: min(300px, 80vw); aspect-ratio: 9 / 17; border-radius: 36px; border: 10px solid var(--fg); background: var(--panel); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.18); }
+.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+h2 { font-size: 28px; letter-spacing: -0.01em; margin: 0 0 20px; }
+section { padding: 36px 0; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: step; }
+.step { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; position: relative; }
+.step::before { counter-increment: step; content: counter(step); position: absolute; top: 18px; right: 20px; font-size: 44px; font-weight: 800; color: var(--line); line-height: 1; }
+.ico { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 14px; }
+.ico svg { width: 28px; height: 28px; }
+.ico.warm { background: var(--warm-soft); color: var(--warm); }
+.step b, .tile b { display: block; font-size: 19px; margin-bottom: 4px; }
+.step span, .tile span { color: var(--muted); font-size: 15px; }
+
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+.tile .ico { width: 44px; height: 44px; border-radius: 12px; margin-bottom: 12px; }
+.tile .ico svg { width: 24px; height: 24px; }
+.tile b { font-size: 17px; }
+
+.free { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.free div { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.free svg { width: 26px; height: 26px; color: var(--accent); flex: none; }
+
+footer { padding: 28px 0 56px; color: var(--muted); font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px 20px; border-top: 1px solid var(--line); margin-top: 20px; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-top: 36px; gap: 28px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .steps, .free { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .tile { padding: 14px; } .tile .ico { margin-bottom: 8px; } .tile b { font-size: 16px; } .tile span { font-size: 14px; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Student Job Kit</h1>
-  <p>A free kit for college students and new grads looking for an internship or a first job. It works with a free Claude, ChatGPT, or Gemini account. No sign-up, no app, no cost.</p>
-  <a class="go" href="kit-page/">Open the kit</a>
-  <p class="note">Everything you type stays on your phone or laptop. Nothing is sent anywhere.</p>
-
-  <h2>Start in 10 minutes</h2>
-  <div class="card">
-    <ol>
-      <li><strong>Log 2 things you did</strong> this year: a role in your campus group, an event you helped run, tutoring, a part-time job. The kit turns them into honest resume lines, with no AI.</li>
-      <li><strong>Make your profile card.</strong> On the Prompts tab, copy prompt 1 into a free AI chat with your resume text.</li>
-      <li><strong>Check one job post</strong> with prompt 2: five checks for the traps that catch students, then apply, skip, or stop.</li>
-    </ol>
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <span class="tag">Free for students and new grads</span>
+      <h1>Land your first job, honestly.</h1>
+      <p class="lede">Turn what you have already done into a resume, and spend time only on jobs you can get.</p>
+      <a class="go" href="kit-page/">Open the kit
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <ul class="chips" aria-label="What you need">
+        <li>Works on your phone</li><li>Free AI chat is enough</li><li>No sign-up</li>
+      </ul>
+    </div>
+    <div class="phone"><img src="tests/screenshots/1c-resume-lines.png" alt="The kit on a phone: resume lines made from logged service, with tips under each one" width="750" height="3072"></div>
   </div>
 
-  <h2>What else is in it</h2>
-  <ul>
-    <li>A scam check for job messages you did not ask for, before you click anything.</li>
-    <li>A short, easy-to-decline message asking someone in your field for 20 minutes.</li>
-    <li>Mock interview prep, a one-evening proof-of-work project, and a weekly review.</li>
-    <li>For churches, campus ministries and alumni groups: a way to connect students with working members in their field, and a job club guide.</li>
-  </ul>
+  <section aria-labelledby="how">
+    <h2 id="how">Three steps</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+        <b>Log what you did</b><span>Campus groups, events, tutoring, work. Get resume lines.</span>
+      </div>
+      <div class="step">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+        <b>Check the post</b><span>Five quick checks. Apply, skip, or stop.</span>
+      </div>
+      <div class="step">
+        <div class="ico warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <b>Ask a person</b><span>20 minutes with someone in your field.</span>
+      </div>
+    </div>
+  </section>
 
-  <h2>Read more</h2>
-  <p><a href="https://github.com/VadneyK/student-job-toolkit/blob/main/GUIDE.md">The guide, in plain words</a> · <a href="https://github.com/VadneyK/student-job-toolkit/tree/main/prompts">All prompts as plain text</a> · <a href="https://github.com/VadneyK/student-job-toolkit/tree/main/community">For communities</a></p>
-  <p class="note">Free to use and share (MIT license).</p>
+  <section aria-labelledby="inside">
+    <h2 id="inside">What's inside</h2>
+    <div class="grid">
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div><b>Resume lines</b><span>No AI needed</span></div>
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div><b>Fit check</b><span>Skip what you can't get</span></div>
+      <div class="tile"><div class="ico warm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 21h20Z"/><path d="M12 10v4M12 18h.01"/></svg></div><b>Scam check</b><span>Before you click</span></div>
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M17 11l2 2 4-4"/></svg></div><b>References</b><span>From people who saw you</span></div>
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg></div><b>Mock interview</b><span>Practice with a pro</span></div>
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.7 6.3 3 3L9 18H6v-3z"/><path d="M3 21h18"/></svg></div><b>Proof of work</b><span>One evening project</span></div>
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><b>Weekly review</b><span>10 minutes</span></div>
+      <div class="tile"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2 20a6 6 0 0 1 12 0M10 20a6 6 0 0 1 12 0"/></svg></div><b>Job club</b><span>For your group</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="free">
+    <h2 id="free">Free, private, honest</h2>
+    <div class="free">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Stays on your device</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>Costs nothing</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>Never makes things up</div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="https://github.com/VadneyK/student-job-toolkit/blob/main/GUIDE.md">Guide</a>
+    <a href="https://github.com/VadneyK/student-job-toolkit/tree/main/prompts">Prompts</a>
+    <a href="https://github.com/VadneyK/student-job-toolkit/tree/main/community">For groups</a>
+    <span>MIT license</span>
+  </footer>
 </main>
 </body>
 </html>

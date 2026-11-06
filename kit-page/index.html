@@ -71,13 +71,13 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
     <h1>Student Job Kit</h1>
     <div class="save" id="save" role="status" aria-live="polite"></div>
   </header>
-  <p class="note">Everything stays in this browser on this device. Nothing is sent anywhere. Export a backup once a week.</p>
+  <p class="note">Saved on this device only. Back up once a week.</p>
 
   <nav id="nav" aria-label="Sections"></nav>
 
   <section id="v-log">
     <h2 id="exp-h">Log something you did</h2>
-    <p class="note">Church service, campus ministry, small groups, events, tutoring, projects, part-time work. Write only what is true. The Resume tab turns each entry into resume lines.</p>
+    <p class="note">Campus groups, church service, events, tutoring, work. True things only.</p>
     <form class="grid panel" id="exp-form" autocomplete="off">
       <input type="hidden" name="id">
       <label class="full">What it was<input name="what" required placeholder="For example: Fall retreat registration desk"></label>
@@ -107,7 +107,7 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
 
   <section id="v-resume" hidden>
     <h2>Resume lines from your log</h2>
-    <p class="note">Made from your entries with plain templates, no AI. Check every line is true before you use it. The notes under each entry say how to make it stronger.</p>
+    <p class="note">Made from your log, no AI. Tips under each one.</p>
     <div class="acts">
       <button class="b primary" type="button" id="copy-resume">Copy all lines</button>
       <button class="b" type="button" id="copy-polish">Copy a polish prompt for a free chat</button>
@@ -116,7 +116,7 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
     </div>
     <div class="list" id="resume-list"></div>
     <h2>Skills, each with an example</h2>
-    <p class="note">Most employers want a skill shown with an example, not a list of words. Each skill below comes with the line from your log that shows it.</p>
+    <p class="note">Each skill, with the line that proves it.</p>
     <div class="list" id="skills-list"></div>
     <h2>References</h2>
     <div class="list" id="ref-list"></div>
@@ -124,13 +124,13 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.5 var(--mono)
 
   <section id="v-prompts" hidden>
     <h2>Prompts for any free AI chat</h2>
-    <p class="note">Tap Copy, open a new chat (Claude, ChatGPT, or Gemini, free plan is fine), paste, then fill the [PASTE ... HERE] parts. Your profile card goes in for you.</p>
+    <p class="note">Copy, paste into any free AI chat, fill in the [PASTE] parts. Your card goes in for you.</p>
     <div class="list" id="prompt-list"></div>
   </section>
 
   <section id="v-card" hidden>
     <h2>Your profile card</h2>
-    <p class="note">Fill it once with prompt 1. Every Copy button pastes it into the prompt. Keep out your phone, address, and ID numbers.</p>
+    <p class="note">Fill once with prompt 1. No phone, address, or ID numbers.</p>
     <textarea class="card" id="card" aria-label="Profile card" spellcheck="true"></textarea>
     <div class="acts">
       <button class="b" type="button" id="card-reset">Start a blank card</button>
