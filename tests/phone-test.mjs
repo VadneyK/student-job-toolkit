@@ -11,7 +11,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const url = pathToFileURL(join(root, "kit-page", "index.html")).href;
-const shots = process.env.SHOTS || join(root, "tests", "screenshots");
+const shots = join(root, "tests", "screenshots");
 mkdirSync(shots, { recursive: true });
 import { existsSync, readdirSync } from "node:fs";
 import { homedir } from "node:os";

@@ -21,7 +21,7 @@ test:
 	node tools/build.mjs
 	@git diff --quiet -- kit-page/index.html || { echo "kit-page/index.html changed on build: commit it first."; exit 1; }
 	node tools/check.mjs
-	SHOTS=$(OUT)/shots $(NODE) tests/phone-test.mjs
+	$(NODE) tests/phone-test.mjs
 
 # Serve the repo locally, run the layout check on the landing page and the kit page, always stop the server.
 check: deps test
