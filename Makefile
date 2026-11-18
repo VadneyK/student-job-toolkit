@@ -1,5 +1,6 @@
 # Release path for the Student Job Kit on GitHub Pages. `make ship` is the only way to release.
-# make check : build the prompts into the kit page, text check, phone test, layout-check at nine widths (local)
+# make check : build the prompts into the kit page, text check, phone test, search and AI-answer checks
+#              (tests/check_seo.py), layout-check at nine widths (local)
 # make ship  : check, push main, wait for the Pages deploy (.github/workflows/pages.yml), smoke-test the live site,
 #              and revert the release if the smoke test fails
 SHELL := /bin/bash
@@ -27,6 +28,7 @@ test:
 check: deps test
 	python3 -m http.server $(PORT) >/dev/null 2>&1 & srv=$$!; trap "kill $$srv" EXIT; \
 	for i in $$(seq 1 40); do curl -sf -o /dev/null http://127.0.0.1:$(PORT)/ && break; sleep 0.25; done; \
+	python3 tests/check_seo.py http://127.0.0.1:$(PORT)/ http://127.0.0.1:$(PORT)/kit-page/ --live-base $(LIVE) && \
 	$(NODE) tests/layout-check.mjs http://127.0.0.1:$(PORT)/ --widths $(WIDTHS) --out $(OUT)/local-home; \
 	$(NODE) tests/layout-check.mjs http://127.0.0.1:$(PORT)/kit-page/ --widths $(WIDTHS) --out $(OUT)/local-kit
 

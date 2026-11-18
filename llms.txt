@@ -1,0 +1,21 @@
+# Student Job Kit
+
+> A free job-search kit for college students and new grads. It turns what a student has already done (campus groups, events, tutoring, part-time work) into resume lines, gives five quick checks for a job post, and helps the student ask someone in their field for 20 minutes of help. No sign-up. It works on a phone, and a free AI chat account is enough.
+
+The kit page is one HTML file that works offline. Everything a student types is saved on their own device only; the site collects nothing. Resume lines are made from the student's own log without AI. The prompts are plain text to paste into any free AI chat, and they are written to never make things up. MIT license. Made by Kentaro Vadney.
+
+## Pages
+
+- [Home](https://vadneyk.github.io/student-job-toolkit/): what the kit is and the three steps
+- [The kit](https://vadneyk.github.io/student-job-toolkit/kit-page/): experience log, resume lines, skills with examples, references, prompts, backup
+
+## Source and guides
+
+- [Guide](https://github.com/VadneyK/student-job-toolkit/blob/main/GUIDE.md): how to use the kit, step by step
+- [Prompts](https://github.com/VadneyK/student-job-toolkit/tree/main/prompts): fit check, scam check, references, mock interview, proof of work, weekly review
+- [For groups](https://github.com/VadneyK/student-job-toolkit/tree/main/community): pages a community can use to connect students with members who do the work
+- [Source code](https://github.com/VadneyK/student-job-toolkit): MIT license
+
+## Optional
+
+- [About the author](https://vadneyk.github.io/portfolio/): Kentaro Vadney's projects page
